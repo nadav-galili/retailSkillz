@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
 import hrDashboard from "@/assets/images/hr_dashboard.png";
 
 interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -59,7 +58,6 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
   (
     {
       className,
-      title = "Build products for everyone",
       subtitle = {
         regular: "Designing your projects faster with ",
         gradient: "the largest figma UI kit.",
