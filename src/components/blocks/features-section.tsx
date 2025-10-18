@@ -17,49 +17,49 @@ interface FeaturesSectionProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const features = [
   {
-    title: "Custom Learning Portal",
+    title: "פורטל הכשרות מותאם אישית",
     description:
-      "Create branded, customized learning environments tailored to your organization's specific needs and branding.",
+      "בנו את פורטל ההכשרות שלכם לפי העיצוב והמותג שלכם, עם תוכן מותאם לכל מחלקה וסניף",
     icon: BookOpen,
     color: "from-blue-500 to-cyan-500",
     bgColor: "bg-blue-50 dark:bg-blue-950/20",
   },
   {
-    title: "Manager Dashboard",
+    title: "דשבורד מנהלים מתקדם",
     description:
-      "Comprehensive analytics and insights to track team performance, engagement, and training completion rates.",
+      "נתוני ביצועים מפורטים, דוחות התקדמות בזמן אמת ואנליטיקות מעמיקות לכל מחלקה וסניף",
     icon: BarChart3,
     color: "from-purple-500 to-pink-500",
     bgColor: "bg-purple-50 dark:bg-purple-950/20",
   },
   {
-    title: "Testing & Assessments",
+    title: "מערכת בחינות ואימות ידע",
     description:
-      "Build flexible assessments and quizzes to validate learning outcomes and measure knowledge retention.",
+      "בחינות אינטראקטיביות, תרגילי סימולציה וכלים למדידת רמת השליטה בחומר הלימוד",
     icon: CheckSquare,
     color: "from-green-500 to-emerald-500",
     bgColor: "bg-green-50 dark:bg-green-950/20",
   },
   {
-    title: "Mobile Accessibility",
+    title: "נגישות מכל מכשיר",
     description:
-      "Fully responsive platform accessible on any device, enabling employees to learn anytime, anywhere.",
+      "המערכת פועלת בצורה מושלמת על מחשבים, טאבלטים וטלפונים - עובדים יכולים ללמוד בכל מקום",
     icon: Smartphone,
     color: "from-orange-500 to-red-500",
     bgColor: "bg-orange-50 dark:bg-orange-950/20",
   },
   {
-    title: "Progress Tracking",
+    title: "מעקב התקדמות מפורט",
     description:
-      "Real-time progress visualization with detailed metrics on skill development and training completion.",
+      "צפו בהתקדמות כל עובד, זהו פערי ידע ועקבו אחר שיפור הביצועים לאורך זמן",
     icon: TrendingUp,
     color: "from-indigo-500 to-blue-500",
     bgColor: "bg-indigo-50 dark:bg-indigo-950/20",
   },
   {
-    title: "User Management",
+    title: "ניהול משתמשים וגישות",
     description:
-      "Granular permission controls and user management to ensure proper access levels across your organization.",
+      "ניהול הרשאות מתקדם, קבוצות משתמשים ושליטה מלאה על מי רואה מה במערכת",
     icon: Users,
     color: "from-rose-500 to-pink-500",
     bgColor: "bg-rose-50 dark:bg-rose-950/20",
@@ -70,8 +70,8 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
   (
     {
       className,
-      title = "Powerful Features",
-      subtitle = "Everything you need to create, manage, and deliver world-class retail training",
+      title = "יכולות רבות עוצמה שמביאות תוצאות",
+      subtitle = "כל מה שאתם צריכים כדי ליצור, לנהל ולמדוד הכשרות עובדים ברמה הגבוהה ביותר",
       ...props
     },
     ref
@@ -94,7 +94,6 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
         y: 0,
         transition: {
           duration: 0.5,
-          ease: "easeOut",
         },
       },
       hover: {
@@ -117,7 +116,7 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-500/10 to-accent-500/5 rounded-full blur-3xl -z-10 opacity-40" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-secondary-500/10 to-primary-500/5 rounded-full blur-3xl -z-10 opacity-40" />
 
-        <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto" dir="rtl">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -125,7 +124,7 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-primary-500 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
               {title}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -204,11 +203,11 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-              Ready to transform your retail training? Our platform is designed
-              to scale with your organization and adapt to your unique needs.
+              מוכנים לחולל מהפכה בהכשרת העובדים שלכם? המערכת שלנו מותאמת לגדול
+              איתכם ולהתאים לצרכים הייחודיים שלכם.
             </p>
             <button className="relative inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
-              Get Started Today
+              התחילו עוד היום
             </button>
           </motion.div>
         </div>

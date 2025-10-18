@@ -19,15 +19,15 @@ interface CTASectionProps extends React.HTMLAttributes<HTMLDivElement> {
 const benefits = [
   {
     icon: Zap,
-    text: "Reduce training time by 40%",
+    text: "הפחתת זמן הכשרה ב-60%",
   },
   {
     icon: ArrowRight,
-    text: "Improve employee retention rates",
+    text: "שיפור משמעותי בשימור עובדים",
   },
   {
     icon: Zap,
-    text: "Measurable skill improvements",
+    text: "עליה מדידה בביצועי הצוות",
   },
 ];
 
@@ -35,14 +35,14 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
   (
     {
       className,
-      title = "Ready to Transform Your Retail Training?",
-      subtitle = "Join leading retailers who are already improving their team's performance with RetailSkillz",
+      title = "מוכנים להפוך את ההכשרות לנשק התחרותי שלכם?",
+      subtitle = "הצטרפו למאות קמעונאים בישראל שכבר משפרים את ביצועי הצוות עם retailSkillz",
       primaryCTA = {
-        text: "Start Free Trial",
+        text: "התחילו בניסיון חינמי",
         href: "#signup",
       },
       secondaryCTA = {
-        text: "Schedule Demo",
+        text: "קבעו פגישת הדגמה",
         href: "#demo",
       },
       ...props
@@ -91,7 +91,7 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
           transition={{ duration: 3, repeat: Infinity }}
         />
 
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-4xl mx-auto" dir="rtl">
           {/* Header */}
           <motion.div
             className="text-center mb-12"
@@ -100,7 +100,7 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
             <motion.h2
-              className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-accent-600 to-secondary-600 dark:from-primary-400 dark:via-accent-400 dark:to-secondary-400"
+              className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-accent-600 to-secondary-600 dark:from-primary-400 dark:via-accent-400 dark:to-secondary-400"
               initial={{ scale: 0.95 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -169,7 +169,7 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
               {/* Content */}
               <div className="relative z-10 flex items-center justify-center gap-2">
                 {primaryCTA.text}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 rotate-180" />
               </div>
             </motion.a>
 
@@ -207,12 +207,12 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
               </div>
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Questions?
+                  יש שאלות?
                 </p>
                 <a
-                  href="mailto:hello@retailskillz.com"
+                  href="mailto:nadav@retailskillz.com"
                   className="font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  hello@retailskillz.com
+                  nadav@retailskillz.com
                 </a>
               </div>
             </motion.div>
@@ -227,12 +227,12 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
               </div>
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Schedule a demo
+                  קבעו פגישת הדגמה
                 </p>
                 <a
                   href="#demo"
                   className="font-semibold text-gray-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
-                  Book a time slot
+                  בחרו זמן נוח
                 </a>
               </div>
             </motion.div>
@@ -245,8 +245,7 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}>
-            Trusted by 500+ retail organizations worldwide • 14-day free trial •
-            No credit card required
+            מהימן על ידי מאות עסקי קמעונאות בישראל • ניסיון חינמי למשך 14 יום • ללא צורך בכרטיס אשראי
           </motion.p>
         </div>
       </div>

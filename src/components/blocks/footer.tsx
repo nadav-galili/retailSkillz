@@ -17,24 +17,24 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const quickLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Features", href: "#features" },
-  { label: "Problem & Solution", href: "#problem-solution" },
-  { label: "Contact", href: "#contact" },
+  { label: "בית", href: "#hero" },
+  { label: "יכולות", href: "#features" },
+  { label: "בעיות ופתרונות", href: "#problem-solution" },
+  { label: "צרו קשר", href: "#contact" },
 ];
 
 const legalLinks = [
-  { label: "Privacy Policy", href: "#privacy" },
-  { label: "Terms of Service", href: "#terms" },
-  { label: "Cookie Policy", href: "#cookies" },
-  { label: "Compliance", href: "#compliance" },
+  { label: "מדיניות פרטיות", href: "#privacy" },
+  { label: "תנאי שימוש", href: "#terms" },
+  { label: "מדיניות עוגיות", href: "#cookies" },
+  { label: "ציות ותקינה", href: "#compliance" },
 ];
 
 const productLinks = [
-  { label: "Learning Platform", href: "#" },
-  { label: "Analytics Dashboard", href: "#" },
-  { label: "Mobile App", href: "#" },
-  { label: "Integrations", href: "#" },
+  { label: "פלטפורמת הלמידה", href: "#" },
+  { label: "דשבורד אנליטיקות", href: "#" },
+  { label: "אפליקציה ניידת", href: "#" },
+  { label: "אינטגרציות", href: "#" },
 ];
 
 const socialLinks = [
@@ -48,8 +48,8 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
   (
     {
       className,
-      companyName = "RetailSkillz",
-      companyDescription = "Empowering retail teams with world-class training and skill development solutions.",
+      companyName = "retailSkillz",
+      companyDescription = "מחזקים צוותי קמעונאות עם פתרונות הכשרה מתקדמים ומותאמים לשוק הישראלי.",
       ...props
     },
     ref
@@ -93,7 +93,7 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent-500/5 to-secondary-500/5 rounded-full blur-3xl -z-10" />
 
         {/* Main content */}
-        <div className="relative z-10">
+        <div className="relative z-10" dir="rtl">
           {/* Top section */}
           <div className="border-b border-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -135,7 +135,7 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}>
-                  <h4 className="font-semibold text-white mb-6">Quick Links</h4>
+                  <h4 className="font-semibold text-white mb-6">קישורים מהירים</h4>
                   <ul className="space-y-3">
                     {quickLinks.map((link, index) => (
                       <motion.li
@@ -161,7 +161,7 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}>
-                  <h4 className="font-semibold text-white mb-6">Product</h4>
+                  <h4 className="font-semibold text-white mb-6">המוצר</h4>
                   <ul className="space-y-3">
                     {productLinks.map((link, index) => (
                       <motion.li
@@ -187,23 +187,23 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}>
-                  <h4 className="font-semibold text-white mb-6">Contact</h4>
+                  <h4 className="font-semibold text-white mb-6">צרו קשר</h4>
                   <div className="space-y-4">
                     <a
-                      href="mailto:hello@retailskillz.com"
+                      href="mailto:nadav@retailskillz.com"
                       className="flex items-start gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
                       <Mail className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                      <span>hello@retailskillz.com</span>
+                      <span>nadav@retailskillz.com</span>
                     </a>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+972501234567"
                       className="flex items-start gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
                       <Phone className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                      <span>+1 (234) 567-890</span>
+                      <span>050-123-4567</span>
                     </a>
                     <div className="flex items-start gap-3 text-gray-400 text-sm">
                       <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                      <span>123 Retail Street, Commerce City, CC 12345</span>
+                      <span>תל אביב, ישראל</span>
                     </div>
                   </div>
                 </motion.div>
@@ -216,13 +216,13 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Copyright */}
               <motion.p
-                className="text-gray-500 text-sm text-center md:text-left"
+                className="text-gray-500 text-sm text-center md:text-right"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}>
-                &copy; {new Date().getFullYear()} {companyName}. All rights
-                reserved.
+                &copy; {new Date().getFullYear()} {companyName}. כל הזכויות
+                שמורות.
               </motion.p>
 
               {/* Legal Links */}
@@ -255,7 +255,7 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}>
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span>All systems operational</span>
+                <span>כל המערכות פועלות</span>
               </motion.div>
             </div>
           </div>

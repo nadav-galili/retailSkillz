@@ -10,54 +10,53 @@ interface ProblemSolutionProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const problems = [
   {
-    title: "Inconsistent Training Quality",
+    title: "הכשרות לא אחידות וללא מעקב",
     description:
-      "Retail staff receive fragmented training across locations with no standardized approach",
+      "כל סניף מכשיר עובדים בצורה שונה, ללא תקן מוגדר או מעקב אחר התקדמות והישגים",
     icon: AlertCircle,
   },
   {
-    title: "High Employee Turnover",
+    title: "עלויות הכשרה גבוהות וזמן רב",
     description:
-      "Lack of engaging training leads to demotivated staff and increased turnover costs",
+      "הכשרות פנים אל פנים דורשות משאבי זמן ואנוש יקרים, במיוחד בעונות לחץ",
     icon: AlertCircle,
   },
   {
-    title: "Limited Skill Development",
-    description:
-      "Traditional methods don't track or measure employee skill progression effectively",
+    title: "חוסר נתונים על ביצועי עובדים",
+    description: "קשה לדעת איזה עובדים זקוקים לחיזוק נוסף או מי מצטיין בתפקידו",
     icon: AlertCircle,
   },
   {
-    title: "Time & Resource Constraints",
+    title: "קושי בהעברת ידע בין עובדים",
     description:
-      "Manual training consumes valuable time and resources that could be invested elsewhere",
+      "כשעובד מנוסה עוזב, הידע והניסיון שלו הולכים איתו - אין דרך לשמר אותם",
     icon: AlertCircle,
   },
 ];
 
 const solutions = [
   {
-    title: "Unified Training Platform",
+    title: "פלטפורמת למידה מרכזית ואחידה",
     description:
-      "Standardized curriculum accessible to all employees across all locations in real-time",
+      "כל ההכשרות במקום אחד, גישה מכל מכשיר, תוכן מעודכן ותקינה קבועה לכל העובדים",
     icon: CheckCircle2,
   },
   {
-    title: "Engagement & Gamification",
+    title: "מערכת בחינות וסימולציות חכמה",
     description:
-      "Interactive learning paths with progress tracking, badges, and rewards to keep staff motivated",
+      "עובדים עוברים בחינות אינטראקטיביות שמבטיחות הבנה ושליטה בחומר הלימוד",
     icon: CheckCircle2,
   },
   {
-    title: "Skills Analytics & Insights",
+    title: "דשבורד מנהלים מתקדם",
     description:
-      "Detailed performance metrics and skill assessments to identify gaps and growth opportunities",
+      "מעקב מלא על התקדמות העובדים, זיהוי פערים ואפשרות לבצע התערבות יעילה",
     icon: CheckCircle2,
   },
   {
-    title: "Scalable & Efficient",
+    title: "אוטומציה מלאה וחיסכון בזמן",
     description:
-      "Automated training workflows that reduce overhead and let managers focus on leadership",
+      "המערכת מנהלת בעצמה את כל תהליכי ההכשרה - מנהלים יכולים להתמקד בניהול העסק",
     icon: CheckCircle2,
   },
 ];
@@ -69,8 +68,8 @@ const ProblemSolutionSection = React.forwardRef<
   (
     {
       className,
-      title = "The Problem & Our Solution",
-      subtitle = "Transforming retail training from a challenge into a competitive advantage",
+      title = "האתגרים בהכשרת עובדים בקמעונאות והפתרון שלנו",
+      subtitle = "הופכים את ההכשרות מעומס לכלי תחרותי שמשפר את הביצועים ומפחית עלויות",
       ...props
     },
     ref
@@ -93,7 +92,6 @@ const ProblemSolutionSection = React.forwardRef<
         y: 0,
         transition: {
           duration: 0.5,
-          ease: "easeOut",
         },
       },
     };
@@ -106,7 +104,7 @@ const ProblemSolutionSection = React.forwardRef<
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950 pointer-events-none" />
 
-        <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="relative z-10 max-w-6xl mx-auto" dir="rtl">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -114,14 +112,13 @@ const ProblemSolutionSection = React.forwardRef<
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+            <h2 className="text-4xl text-primary-500 md:text-5xl font-bold mb-4 bg-clip-text  bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
               {title}
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-secondary-500 dark:text-gray-400 max-w-3xl mx-auto">
               {subtitle}
             </p>
           </motion.div>
-
           {/* Problems & Solutions Grid */}
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Problems Section */}
@@ -131,8 +128,8 @@ const ProblemSolutionSection = React.forwardRef<
               whileInView="visible"
               viewport={{ once: true }}
               className="space-y-4">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Current Challenges
+              <h3 className="text-2xl font-semibold text-primary-700 dark:text-primary-400 mb-6">
+                האתגרים הקיימים
               </h3>
               {problems.map((problem, index) => {
                 const Icon = problem.icon;
@@ -165,8 +162,8 @@ const ProblemSolutionSection = React.forwardRef<
               whileInView="visible"
               viewport={{ once: true }}
               className="space-y-4">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                RetailSkillz Solutions
+              <h3 className="text-2xl font-semibold text-primary-700 dark:text-white mb-6">
+                הפתרונות של retailSkillz
               </h3>
               {solutions.map((solution, index) => {
                 const Icon = solution.icon;

@@ -10,9 +10,9 @@ export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems: NavItem[] = [
-    { label: "Skills", href: "#skills" },
-    { label: "Training", href: "#training" },
-    { label: "Careers", href: "#careers" },
+    { label: "יכולות", href: "#skills" },
+    { label: "הכשרות", href: "#training" },
+    { label: "קריירה", href: "#careers" },
   ];
 
   const scrollToSection = (href: string) => {
