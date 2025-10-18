@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Mail, Calendar, Zap } from "lucide-react";
+import { Mail, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CTASectionProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,62 +16,8 @@ interface CTASectionProps extends React.HTMLAttributes<HTMLDivElement> {
   };
 }
 
-const benefits = [
-  {
-    icon: Zap,
-    text: "הפחתת זמן הכשרה ב-60%",
-  },
-  {
-    icon: ArrowRight,
-    text: "שיפור משמעותי בשימור עובדים",
-  },
-  {
-    icon: Zap,
-    text: "עליה מדידה בביצועי הצוות",
-  },
-];
-
 const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
-  (
-    {
-      className,
-      title = "מוכנים להפוך את ההכשרות לנשק התחרותי שלכם?",
-      subtitle = "הצטרפו למאות קמעונאים בישראל שכבר משפרים את ביצועי הצוות עם retailSkillz",
-      primaryCTA = {
-        text: "התחילו בניסיון חינמי",
-        href: "#signup",
-      },
-      secondaryCTA = {
-        text: "קבעו פגישת הדגמה",
-        href: "#demo",
-      },
-      ...props
-    },
-    ref
-  ) => {
-    const containerVariants = {
-      hidden: { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: {
-          staggerChildren: 0.1,
-          delayChildren: 0.2,
-        },
-      },
-    };
-
-    const itemVariants = {
-      hidden: { opacity: 0, y: 10 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.5,
-          ease: "easeOut",
-        },
-      },
-    };
-
+  ({ className, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -93,102 +39,6 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
 
         <div className="relative z-10 max-w-4xl mx-auto" dir="rtl">
           {/* Header */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}>
-            <motion.h2
-              className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-accent-600 to-secondary-600 dark:from-primary-400 dark:via-accent-400 dark:to-secondary-400"
-              initial={{ scale: 0.95 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}>
-              {title}
-            </motion.h2>
-            <motion.p
-              className="text-xl text-gray-600 dark:text-gray-300"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}>
-              {subtitle}
-            </motion.p>
-          </motion.div>
-
-          {/* Benefits */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-6 mb-12">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="flex items-center justify-center gap-3 p-4 rounded-lg bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 backdrop-blur-sm">
-                  <Icon className="w-5 h-5 text-primary-500 dark:text-primary-400 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">
-                    {benefit.text}
-                  </span>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}>
-            {/* Primary CTA */}
-            <motion.a
-              href={primaryCTA.href}
-              className="relative group overflow-hidden rounded-full px-8 py-4 font-semibold text-white text-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}>
-              {/* Background with gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-600 group-hover:from-primary-700 group-hover:to-accent-700 transition-all duration-300" />
-
-              {/* Shine effect */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                animate={{ x: ["100%", "-100%"] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-
-              {/* Shadow */}
-              <div className="absolute inset-0 shadow-lg group-hover:shadow-xl group-hover:shadow-primary-500/50 transition-all duration-300 rounded-full" />
-
-              {/* Content */}
-              <div className="relative z-10 flex items-center justify-center gap-2">
-                {primaryCTA.text}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 rotate-180" />
-              </div>
-            </motion.a>
-
-            {/* Secondary CTA */}
-            <motion.a
-              href={secondaryCTA.href}
-              className="relative group overflow-hidden rounded-full px-8 py-4 font-semibold text-gray-900 dark:text-white text-center border-2 border-gray-300 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-400 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}>
-              {/* Hover background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950/30 dark:to-accent-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              {/* Content */}
-              <div className="relative z-10 flex items-center justify-center gap-2">
-                <Calendar className="w-5 h-5" />
-                {secondaryCTA.text}
-              </div>
-            </motion.a>
-          </motion.div>
 
           {/* Contact Options */}
           <motion.div
@@ -212,7 +62,7 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
                 <a
                   href="mailto:nadav@retailskillz.com"
                   className="font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  nadav@retailskillz.com
+                  nadavg@retailskillz.online
                 </a>
               </div>
             </motion.div>
@@ -237,16 +87,6 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
               </div>
             </motion.div>
           </motion.div>
-
-          {/* Trust indicators */}
-          <motion.p
-            className="text-center text-sm text-gray-600 dark:text-gray-400 mt-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}>
-            מהימן על ידי מאות עסקי קמעונאות בישראל • ניסיון חינמי למשך 14 יום • ללא צורך בכרטיס אשראי
-          </motion.p>
         </div>
       </div>
     );

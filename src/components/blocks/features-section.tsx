@@ -133,6 +133,7 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
 
     return (
       <div
+        id="features"
         ref={ref}
         className={cn("relative py-20 px-4 sm:px-6 lg:px-8", className)}
         {...props}>
@@ -251,9 +252,6 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
                 <p className="text-gray-600 dark:text-gray-400 mb-3">
                   העלאת קורסים ומבחנים למערכת (כל קורס כולל עד 4 סרטונים)
                 </p>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
-                  ₪500 לקורס
-                </span>
               </div>
               <div className="text-right bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
@@ -262,9 +260,6 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
                 <p className="text-gray-600 dark:text-gray-400 mb-3">
                   שיוך משתמשים, הגדרת הרשאות וניהול סיסמאות כניסה למערכת
                 </p>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
-                  ₪250 לקורס
-                </span>
               </div>
             </div>
             <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
@@ -283,9 +278,11 @@ const FeaturesSection = React.forwardRef<HTMLDivElement, FeaturesSectionProps>(
               מוכנים לחולל מהפכה בהכשרת העובדים שלכם? פלטפורמת Retail-Skillz
               מתאימה לגדול איתכם ולהתאים לצרכים הייחודיים שלכם.
             </p>
-            <button className="relative inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
-              בואו נתחיל - קבלו הצעת מחיר
-            </button>
+            <a href="#contact">
+              <button className="relative inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                בואו נתחיל - קבלו הצעת מחיר
+              </button>
+            </a>
           </motion.div>
         </div>
       </div>

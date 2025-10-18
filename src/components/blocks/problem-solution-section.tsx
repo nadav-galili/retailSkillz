@@ -68,7 +68,7 @@ const ProblemSolutionSection = React.forwardRef<
   (
     {
       className,
-      title = "מהאתגרים בהכשרת עובדים לפתרון מקצועי ומתקדם",
+      title = "לעבור מאתגרים בהכשרת עובדים לפתרון מקצועי ומתקדם",
       subtitle = "הופכים את ההכשרות מעומס יקר לכלי אסטרטגי שמשפר ביצועים, מפחית עלויות ומבטיח עקביות בכל הארגון",
       ...props
     },
@@ -98,6 +98,7 @@ const ProblemSolutionSection = React.forwardRef<
 
     return (
       <div
+        id="problem-solution"
         ref={ref}
         className={cn("relative py-20 px-4 sm:px-6 lg:px-8", className)}
         {...props}>

@@ -2,7 +2,7 @@ import { HeroSection } from "./components/blocks/hero-section-dark";
 import { ProblemSolutionSection } from "./components/blocks/problem-solution-section";
 import { FeaturesSection } from "./components/blocks/features-section";
 import { CTASection } from "./components/blocks/cta-section";
-import { Footer } from "./components/blocks/footer";
+import { ContactForm } from "./components/blocks/contact-form";
 import { Navbar } from "./components/ui/Navbar";
 
 function App() {
@@ -33,8 +33,13 @@ function App() {
         <CTASection />
       </section>
 
+      {/* Contact Form Section */}
+      <section id="contact" className="py-0 bg-white">
+        <ContactForm />
+      </section>
+
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
