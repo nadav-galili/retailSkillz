@@ -26,9 +26,9 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20">
+          <div className="flex-shrink-0 w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16">
             <motion.div
               className="w-full h-full relative"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -127,7 +127,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed top-14 left-0 w-full bg-white shadow-lg z-40 max-h-96 overflow-y-auto">
+            className="md:hidden fixed top-20 left-0 w-full bg-white shadow-lg z-40 max-h-96 overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a

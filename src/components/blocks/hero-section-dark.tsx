@@ -64,13 +64,11 @@ const heroAnimations = {
       opacity: 0,
       y: 30,
       scale: 0.98,
-      filter: "blur(2px)", // Reduced blur for better performance
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         duration: 0.8,
         type: "tween",
@@ -153,14 +151,12 @@ const heroAnimations = {
       y: 40,
       scale: 0.95,
       rotateX: 15, // Reduced rotation
-      filter: "blur(4px)", // Reduced blur
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       rotateX: 0,
-      filter: "blur(0px)",
       transition: {
         duration: 1.0,
         delay: 0.3,
