@@ -6,7 +6,24 @@
 }
 
 .transform-gpu {
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Enhanced hardware acceleration utilities */
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+.hardware-layer {
+  transform: translate3d(0, 0, 0);
 }
 
 /* Professional animation keyframes for premium feel */
@@ -35,6 +52,76 @@
 
 .animate-grid {
   animation: grid 15s linear infinite;
+}
+
+/* Enhanced mobile optimizations to prevent flickering */
+@media (max-width: 768px) {
+  /* Ultra-optimized GPU acceleration on mobile */
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent text flickering on mobile */
+    -webkit-text-stroke: 0.01px transparent;
+  }
+
+  /* Backface visibility utility for preventing flicker */
+  .backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Optimized will-change management */
+  .will-change-auto {
+    will-change: auto;
+  }
+
+  .will-change-transform {
+    will-change: transform, opacity;
+  }
+
+  /* Force hardware layers for smoother animations */
+  .hardware-layer {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Disable complex animations on mobile */
+  .animate-grid {
+    animation: none !important;
+  }
+
+  /* Optimize text rendering on mobile */
+  h1, h2, h3, h4, h5, h6, p, span {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Prevent layout shifts during animations */
+  [data-motion-component] {
+    contain: layout style paint;
+  }
+
+  /* Optimize images for mobile */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+
+  /* Force hardware acceleration for critical elements */
+  [style*="translate3d"],
+  [style*="translateZ"] {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 }
 
 @theme {
