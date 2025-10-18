@@ -583,7 +583,7 @@ const DashboardsShowcase = React.forwardRef<
 
           {/* Dashboard Tabs */}
           <motion.div
-            className="flex gap-3 mb-8 overflow-x-auto pb-2 justify-center"
+            className="flex gap-2 sm:gap-3 mb-6 sm:mb-8 overflow-x-auto pb-2 justify-center flex-wrap sm:flex-nowrap"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -594,13 +594,16 @@ const DashboardsShowcase = React.forwardRef<
                 variants={itemVariants}
                 onClick={() => setSelectedDashboard(index)}
                 className={cn(
-                  "px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all duration-300 text-sm md:text-base",
+                  "px-3 sm:px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all duration-300 text-xs sm:text-sm md:text-base",
                   selectedDashboard === index
                     ? "bg-gradient-to-r from-primary-600 to-accent-600 text-white shadow-lg"
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-500"
                 )}>
-                <span className="mr-2">{dashboard.icon}</span>
-                {dashboard.title}
+                <span className="mr-1 sm:mr-2">{dashboard.icon}</span>
+                <span className="hidden sm:inline">{dashboard.title}</span>
+                <span className="sm:hidden text-xs">
+                  {dashboard.title.substring(0, 4)}
+                </span>
               </motion.button>
             ))}
           </motion.div>
@@ -612,13 +615,13 @@ const DashboardsShowcase = React.forwardRef<
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 p-8 shadow-sm">
+            className="bg-white dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6 md:p-8 shadow-sm overflow-x-auto">
             {/* Dashboard Header */}
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">
                 {dashboards[selectedDashboard].title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 {dashboards[selectedDashboard].description}
               </p>
             </div>
@@ -635,11 +638,11 @@ const DashboardsShowcase = React.forwardRef<
             </div>
 
             {/* Dashboard Footer */}
-            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
                 ✓ נתונים מעודכנים בזמן אמת
               </p>
-              <button className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-primary-700 transition-colors text-sm font-medium">
+              <button className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-primary-700 transition-colors text-xs sm:text-sm font-medium w-full sm:w-auto">
                 ייצא דוח ל-Excel
               </button>
             </div>
@@ -647,7 +650,7 @@ const DashboardsShowcase = React.forwardRef<
 
           {/* Features Grid */}
           <motion.div
-            className="grid md:grid-cols-4 gap-4 mt-12"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mt-8 sm:mt-12"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -677,12 +680,14 @@ const DashboardsShowcase = React.forwardRef<
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="p-4 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/20 border border-blue-200 dark:border-blue-900/30 text-center">
-                <div className="text-3xl mb-2">{feature.icon}</div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm">
+                className="p-3 sm:p-4 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/20 border border-blue-200 dark:border-blue-900/30 text-center">
+                <div className="text-2xl sm:text-3xl mb-1 sm:mb-2">
+                  {feature.icon}
+                </div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-xs sm:text-sm">
                   {feature.title}
                 </h4>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
+                <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
                   {feature.description}
                 </p>
               </motion.div>
