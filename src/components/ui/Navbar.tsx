@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import retailSkillz from "@/assets/images/retailSkillz.png";
 interface NavItem {
   label: string;
   href: string;
@@ -25,14 +25,16 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-26">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <a
-              href="#"
-              className="text-2xl font-bold text-primary-500 hover:text-primary-600 transition-colors">
-              RetailSkillz
-            </a>
+          <div className="flex-shrink-0 w-20 h-20">
+            <img
+              src={retailSkillz}
+              alt="RetailSkillz"
+              width={80}
+              height={0}
+              className="w-full h-full object-contain object-center rounded-lg"
+            />
           </div>
 
           {/* Desktop Navigation */}
