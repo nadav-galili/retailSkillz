@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import retailSkillz from "@/assets/images/retailSkillz.png";
+import { motion } from "motion/react";
 interface NavItem {
   label: string;
   href: string;
@@ -28,13 +29,43 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-26">
           {/* Logo */}
           <div className="flex-shrink-0 w-20 h-20">
-            <img
-              src={retailSkillz}
-              alt="RetailSkillz"
-              width={80}
-              height={0}
-              className="w-full h-full object-contain object-center rounded-lg"
-            />
+            <motion.div
+              className="w-full h-full relative"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+                ease: "easeOut",
+              }}>
+              {/* Animated gradient border */}
+              <motion.div
+                className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-500 via-accent-500 to-secondary-500 p-0.5"
+                animate={{ rotateZ: 360 }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+              <img
+                src={retailSkillz}
+                alt="RetailSkillz"
+                width={80}
+                height={80}
+                className="relative z-10 w-full h-full object-contain object-center rounded-lg bg-white border-2 border-black"
+              />
+              <motion.div
+                className="absolute inset-0 rounded-lg bg-gradient-to-b from-white via-transparent to-transparent pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.5, 0] }}
+                transition={{
+                  duration: 1.5,
+                  delay: 0.1,
+                  times: [0, 0.5, 1],
+                }}
+              />
+            </motion.div>
           </div>
 
           {/* Desktop Navigation */}

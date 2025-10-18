@@ -1,3 +1,4 @@
+import { HeroSection } from "./components/blocks/hero-section-dark";
 import { Navbar } from "./components/ui/Navbar";
 
 function App() {
@@ -9,15 +10,8 @@ function App() {
       <div className="h-16"></div>
 
       {/* Hero Section */}
-      <section id="hero" className="pt-16 pb-20 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Elevate Your Retail Skills
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            Comprehensive training and resources to excel in the retail industry
-          </p>
-        </div>
+      <section id="hero" className=" pb-20 px-4 sm:px-6 lg:px-8 text-center">
+        <HeroSection />
       </section>
 
       {/* Skills Section */}
