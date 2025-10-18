@@ -1,4 +1,8 @@
 import { HeroSection } from "./components/blocks/hero-section-dark";
+import { ProblemSolutionSection } from "./components/blocks/problem-solution-section";
+import { FeaturesSection } from "./components/blocks/features-section";
+import { CTASection } from "./components/blocks/cta-section";
+import { Footer } from "./components/blocks/footer";
 import { Navbar } from "./components/ui/Navbar";
 
 function App() {
@@ -14,35 +18,23 @@ function App() {
         <HeroSection />
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Our Key Skills Training
-          </h2>
-          {/* Placeholder for skills content */}
-        </div>
+      {/* Problem/Solution Section */}
+      <section id="problem-solution" className="py-0">
+        <ProblemSolutionSection />
       </section>
 
-      {/* Training Section */}
-      <section id="training" className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Training Programs
-          </h2>
-          {/* Placeholder for training content */}
-        </div>
+      {/* Features Section */}
+      <section id="features" className="py-0 bg-gray-50">
+        <FeaturesSection />
       </section>
 
-      {/* Careers Section */}
-      <section id="careers" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Retail Career Opportunities
-          </h2>
-          {/* Placeholder for careers content */}
-        </div>
+      {/* CTA Section */}
+      <section id="cta" className="py-0">
+        <CTASection />
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
