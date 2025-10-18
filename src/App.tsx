@@ -1,5 +1,6 @@
 import { HeroSection } from "./components/blocks/hero-section-dark";
 import { ProblemSolutionSection } from "./components/blocks/problem-solution-section";
+import { DashboardsShowcase } from "./components/blocks/dashboards-showcase";
 import { FeaturesSection } from "./components/blocks/features-section";
 import { CTASection } from "./components/blocks/cta-section";
 import { ContactForm } from "./components/blocks/contact-form";
@@ -21,6 +22,11 @@ function App() {
       {/* Problem/Solution Section */}
       <section id="problem-solution" className="py-0">
         <ProblemSolutionSection />
+      </section>
+
+      {/* Dashboards Showcase Section */}
+      <section id="dashboards" className="py-0 bg-white">
+        <DashboardsShowcase />
       </section>
 
       {/* Features Section */}
