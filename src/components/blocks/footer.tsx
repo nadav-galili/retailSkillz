@@ -135,7 +135,9 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}>
-                  <h4 className="font-semibold text-white mb-6">קישורים מהירים</h4>
+                  <h4 className="font-semibold text-white mb-6">
+                    קישורים מהירים
+                  </h4>
                   <ul className="space-y-3">
                     {quickLinks.map((link, index) => (
                       <motion.li
@@ -190,10 +192,10 @@ const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                   <h4 className="font-semibold text-white mb-6">צרו קשר</h4>
                   <div className="space-y-4">
                     <a
-                      href="mailto:nadav@retailskillz.com"
+                      href="mailto:nadav@retailskillz.online"
                       className="flex items-start gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
                       <Mail className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                      <span>nadav@retailskillz.com</span>
+                      <span>nadav@retailskillz.online</span>
                     </a>
                     <a
                       href="tel:+972501234567"

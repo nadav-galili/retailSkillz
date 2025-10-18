@@ -5,7 +5,6 @@ import { FeaturesSection } from "./components/blocks/features-section";
 import { CTASection } from "./components/blocks/cta-section";
 import { ContactForm } from "./components/blocks/contact-form";
 import { Navbar } from "./components/ui/Navbar";
-
 function App() {
   return (
     <div className="min-h-screen bg-gray-50">

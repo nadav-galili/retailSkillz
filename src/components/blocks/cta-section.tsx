@@ -60,7 +60,7 @@ const CTASection = React.forwardRef<HTMLDivElement, CTASectionProps>(
                   יש שאלות?
                 </p>
                 <a
-                  href="mailto:nadav@retailskillz.com"
+                  href="mailto:nadav@retailskillz.online"
                   className="font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   nadavg@retailskillz.online
                 </a>

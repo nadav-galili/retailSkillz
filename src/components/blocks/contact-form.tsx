@@ -138,9 +138,9 @@ const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                     אימייל
                   </h3>
                   <a
-                    href="mailto:nadav@retailskillz.com"
+                    href="mailto:nadav@retailskillz.online"
                     className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    nadavg@retailskillz.com
+                    nadavg@retailskillz.online
                   </a>
                 </div>
               </motion.div>

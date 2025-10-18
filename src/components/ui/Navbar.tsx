@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import retailSkillz from "@/assets/images/retailSkillz.png";
 import { motion } from "motion/react";
+
 interface NavItem {
   label: string;
   href: string;
@@ -26,9 +27,9 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-20 sm:h-32 md:h-40">
           {/* Logo */}
-          <div className="flex-shrink-0 w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16">
+          <div className="flex-shrink-0 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32">
             <motion.div
               className="w-full h-full relative"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -37,7 +38,6 @@ export const Navbar: React.FC = () => {
               transition={{
                 duration: 0.8,
                 delay: 0.1,
-                ease: "easeOut",
               }}>
               {/* Animated gradient border */}
               <motion.div
@@ -46,12 +46,11 @@ export const Navbar: React.FC = () => {
                 transition={{
                   duration: 8,
                   repeat: Infinity,
-                  ease: "linear",
                 }}
               />
               <img
                 src={retailSkillz}
-                alt="מערכת ניהול סרטוני למידה עם דשבורד מתקדם"
+                alt="RetailSkillz Logo"
                 className="relative z-10 w-full h-full object-contain object-center rounded-lg bg-white border-2 border-black"
               />
               <motion.div
@@ -84,7 +83,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden ml-5 sm:ml-0">
+          <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2">
@@ -127,7 +126,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed top-20 left-0 w-full bg-white shadow-lg z-40 max-h-96 overflow-y-auto">
+            className="md:hidden fixed top-32 sm:top-32 left-0 w-full bg-white shadow-lg z-40 max-h-96 overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a
