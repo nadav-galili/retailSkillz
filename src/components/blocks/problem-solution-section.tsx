@@ -10,53 +10,53 @@ interface ProblemSolutionProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const problems = [
   {
-    title: "הכשרות לא אחידות וללא מעקב",
+    title: "הכשרות לא אחידות וללא מעקב מרכזי",
     description:
-      "כל סניף מכשיר עובדים בצורה שונה, ללא תקן מוגדר או מעקב אחר התקדמות והישגים",
+      "כל סניף מכשיר עובדים בצורה שונה, קשה לוודא שהמידע מועבר באופן אחיד ואין דרך למעקב אחר ההתקדמות",
     icon: AlertCircle,
   },
   {
-    title: "עלויות הכשרה גבוהות וזמן רב",
+    title: "עלויות הכשרה גבוהות וצריכת זמן רבה",
     description:
-      "הכשרות פנים אל פנים דורשות משאבי זמן ואנוש יקרים, במיוחד בעונות לחץ",
+      "הכשרות פנים אל פנים דורשות הקדשת משאבי אנוש יקרים, במיוחד כשצריך לחזור על החומר לכל עובד חדש",
     icon: AlertCircle,
   },
   {
-    title: "חוסר נתונים על ביצועי עובדים",
-    description: "קשה לדעת איזה עובדים זקוקים לחיזוק נוסף או מי מצטיין בתפקידו",
+    title: "קשה למדוד יעילות ההכשרות",
+    description:
+      "אין דרך לדעת אם העובדים באמת הבינו את החומר או זוכרים אותו, וקשה לזהות פערי ידע",
     icon: AlertCircle,
   },
   {
-    title: "קושי בהעברת ידע בין עובדים",
+    title: "אובדן ידע כשעובדים עוזבים",
     description:
-      "כשעובד מנוסה עוזב, הידע והניסיון שלו הולכים איתו - אין דרך לשמר אותם",
+      "כשעובד מנוסה עוזב, כל הידע והניסיון שלו הולכים איתו - אין דרך לשמר ולהעביר את המידע לאחרים",
     icon: AlertCircle,
   },
 ];
 
 const solutions = [
   {
-    title: "פלטפורמת למידה מרכזית ואחידה",
+    title: "פלטפורמת ענן מרכזית לכל הארגון",
     description:
-      "כל ההכשרות במקום אחד, גישה מכל מכשיר, תוכן מעודכן ותקינה קבועה לכל העובדים",
+      "מערכת אחידה לכל הסניפים עם גישה מאובטחת מכל מכשיר - מחשב, טאבלט או נייד, ללא צורך בהתקנות",
     icon: CheckCircle2,
   },
   {
-    title: "מערכת בחינות וסימולציות חכמה",
+    title: "דשבורד מנהלים עם מעקב בזמן אמת",
     description:
-      "עובדים עוברים בחינות אינטראקטיביות שמבטיחות הבנה ושליטה בחומר הלימוד",
+      "דוחות מפורטים על התקדמות כל עובד, ניתוחי AI לזיהוי פערים ויצוא נתונים לאקסל לניתוח נוסף",
     icon: CheckCircle2,
   },
   {
-    title: "דשבורד מנהלים מתקדם",
+    title: "מערכת בחינות ומבחני ידע אינטראקטיביים",
     description:
-      "מעקב מלא על התקדמות העובדים, זיהוי פערים ואפשרות לבצע התערבות יעילה",
+      "וידוא שהעובדים באמת הבינו את החומר באמצעות מבחנים מותאמים ומעקב אחר שיפור הביצועים",
     icon: CheckCircle2,
   },
   {
-    title: "אוטומציה מלאה וחיסכון בזמן",
-    description:
-      "המערכת מנהלת בעצמה את כל תהליכי ההכשרה - מנהלים יכולים להתמקד בניהול העסק",
+    title: "מיתוג מותאם ותמיכה מקצועית",
+    description: "המערכת מותאמת לעיצוב והמותג שלכם, עם תמיכה טלפונית לכל בעיה",
     icon: CheckCircle2,
   },
 ];
@@ -68,8 +68,8 @@ const ProblemSolutionSection = React.forwardRef<
   (
     {
       className,
-      title = "האתגרים בהכשרת עובדים בקמעונאות והפתרון שלנו",
-      subtitle = "הופכים את ההכשרות מעומס לכלי תחרותי שמשפר את הביצועים ומפחית עלויות",
+      title = "מהאתגרים בהכשרת עובדים לפתרון מקצועי ומתקדם",
+      subtitle = "הופכים את ההכשרות מעומס יקר לכלי אסטרטגי שמשפר ביצועים, מפחית עלויות ומבטיח עקביות בכל הארגון",
       ...props
     },
     ref
@@ -119,6 +119,7 @@ const ProblemSolutionSection = React.forwardRef<
               {subtitle}
             </p>
           </motion.div>
+
           {/* Problems & Solutions Grid */}
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Problems Section */}
@@ -129,7 +130,7 @@ const ProblemSolutionSection = React.forwardRef<
               viewport={{ once: true }}
               className="space-y-4">
               <h3 className="text-2xl font-semibold text-primary-700 dark:text-primary-400 mb-6">
-                האתגרים הקיימים
+                האתגרים שבעלי רשתות קמעונאות מכירים
               </h3>
               {problems.map((problem, index) => {
                 const Icon = problem.icon;
@@ -163,7 +164,7 @@ const ProblemSolutionSection = React.forwardRef<
               viewport={{ once: true }}
               className="space-y-4">
               <h3 className="text-2xl font-semibold text-primary-700 dark:text-white mb-6">
-                הפתרונות של retailSkillz
+                הפתרונות של מערכת Retail-Skillz
               </h3>
               {solutions.map((solution, index) => {
                 const Icon = solution.icon;
@@ -189,6 +190,39 @@ const ProblemSolutionSection = React.forwardRef<
               })}
             </motion.div>
           </div>
+
+          {/* Value Proposition Section */}
+          <motion.div
+            className="mt-16 grid md:grid-cols-3 gap-8 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}>
+            <div className="bg-white dark:bg-gray-800/50 rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
+                80%
+              </div>
+              <p className="text-gray-600 dark:text-gray-400">
+                חיסכון בעלויות הכשרה
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800/50 rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                24/7
+              </div>
+              <p className="text-gray-600 dark:text-gray-400">
+                למידה זמינה בכל עת
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800/50 rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+                100%
+              </div>
+              <p className="text-gray-600 dark:text-gray-400">
+                עקביות בין כל הסניפים
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     );

@@ -195,12 +195,12 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
     {
       className,
       subtitle = {
-        regular: "הכשירו את הצוות שלכם במהירות עם ",
-        gradient: "פלטפורמת הלמידה המובילה לקמעונאים בישראל",
+        regular: "מערכת למידה מבוססת ענן - ",
+        gradient: "גישה מכל מקום, בכל זמן, ללא התקנות והטמעות",
       },
-      description = "המערכת הדיגיטלית המתקדמת ביותר לניהול הכשרות עובדים בקמעונאות - צפו בשיפור משמעותי בביצועי הצוות, הפחתת עלויות הכשרה ובקרה מלאה על תהליכי ההכשרה בכל הסניפים",
-      ctaText = "התחילו בחינם היום",
-      ctaHref = "#signup",
+      description = "פלטפורמת Retail-Skillz מאפשרת לכם לנהל הכשרות עובדים ברמה הגבוהה ביותר: דשבורד בזמן אמת, ניתוחי AI, אבטחת מידע מתקדמת ותמיכה טלפונית . המערכת פועלת מכל מכשיר עם סיסמא מאובטחת",
+      ctaText = "קבלו הצעת מחיר בהתאמה אישית",
+      ctaHref = "#contact",
       bottomImage = {
         light: hrDashboard,
         dark: hrDashboard,
@@ -304,7 +304,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                   <motion.img
                     src={bottomImage.light}
                     className="w-full shadow-2xl rounded-lg border border-gray-200 dark:hidden transform-gpu"
-                    alt="לוח בקרה למעקב אחר הכשרות עובדים"
+                    alt="מערכת ניהול סרטוני למידה עם דשבורד מתקדם"
                     whileHover={
                       !shouldReduceMotion
                         ? {
@@ -325,7 +325,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                   <motion.img
                     src={bottomImage.dark}
                     className="hidden w-full shadow-2xl rounded-lg border border-gray-800 dark:block transform-gpu"
-                    alt="לוח בקרה למעקב אחר הכשרות עובדים"
+                    alt="מערכת ניהול סרטוני למידה עם דשבורד מתקדם"
                     whileHover={
                       !shouldReduceMotion
                         ? {
