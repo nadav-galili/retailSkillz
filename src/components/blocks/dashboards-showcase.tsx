@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  TrendingUp,
+  ClipboardList,
+  BarChart2,
+  BrainCircuit,
+} from "lucide-react";
+import mixpanel from "mixpanel-browser";
 
 import { cn } from "@/lib/utils";
 
@@ -508,30 +515,40 @@ const DashboardsShowcase = React.forwardRef<
     },
     ref
   ) => {
-    const [selectedDashboard, setSelectedDashboard] = useState(0);
-
     const dashboards = [
       {
+        id: "progress",
         title: "התקדמות הכשרות",
         description: "מעקב על סטטוס ההכשרות לכל עובד",
-        icon: "📊",
+        icon: TrendingUp,
+        content: <Dashboard1 />,
       },
       {
+        id: "kpi",
         title: "ציונים במבחנים",
         description: "השוואת ביצועים בין קבוצות ויחידים",
-        icon: "📈",
+        icon: BarChart2,
+        content: <Dashboard2 />,
       },
       {
+        id: "schedule",
         title: "לוח זמנים ומשימות",
         description: "תכנון למידה אישי וניהול זמן ",
-        icon: "📋",
+        icon: ClipboardList,
+        content: <Dashboard3 />,
       },
       {
+        id: "ai",
         title: "ניתוח AI של עובדים",
         description: "תובנות והמלצות אישיות",
-        icon: "🤖",
+        icon: BrainCircuit,
+        content: <Dashboard4 />,
       },
     ];
+
+    const [selectedDashboard, setSelectedDashboard] = useState(
+      dashboards[0].id
+    );
 
     const containerVariants = {
       hidden: { opacity: 0 },
@@ -552,6 +569,21 @@ const DashboardsShowcase = React.forwardRef<
         transition: { duration: 0.5 },
       },
     };
+
+    const handleTabClick = (id: string) => {
+      setSelectedDashboard(id);
+      const dashboard = dashboards.find((d) => d.id === id);
+      if (dashboard) {
+        mixpanel.track("Dashboard Tab Clicked", {
+          dashboard_id: id,
+          dashboard_title: dashboard.title,
+        });
+      }
+    };
+
+    const selectedContent = dashboards.find(
+      (d) => d.id === selectedDashboard
+    )?.content;
 
     return (
       <div
@@ -588,18 +620,18 @@ const DashboardsShowcase = React.forwardRef<
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}>
-            {dashboards.map((dashboard, index) => (
+            {dashboards.map((dashboard) => (
               <motion.button
-                key={index}
+                key={dashboard.id}
                 variants={itemVariants}
-                onClick={() => setSelectedDashboard(index)}
+                onClick={() => handleTabClick(dashboard.id)}
                 className={cn(
                   "px-3 sm:px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all duration-300 text-xs sm:text-sm md:text-base",
-                  selectedDashboard === index
+                  selectedDashboard === dashboard.id
                     ? "bg-gradient-to-r from-primary-600 to-accent-600 text-white shadow-lg"
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-500"
                 )}>
-                <span className="mr-1 sm:mr-2">{dashboard.icon}</span>
+                <dashboard.icon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 <span className="hidden sm:inline">{dashboard.title}</span>
                 <span className="sm:hidden text-xs">
                   {dashboard.title.substring(0, 4)}
@@ -609,44 +641,41 @@ const DashboardsShowcase = React.forwardRef<
           </motion.div>
 
           {/* Dashboard Display */}
-          <motion.div
-            key={selectedDashboard}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6 md:p-8 shadow-sm overflow-x-auto">
-            {/* Dashboard Header */}
-            <div className="mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">
-                {dashboards[selectedDashboard].title}
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                {dashboards[selectedDashboard].description}
-              </p>
-            </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedDashboard}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6 md:p-8 shadow-sm overflow-x-auto">
+              {/* Dashboard Header */}
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">
+                  {dashboards.find((d) => d.id === selectedDashboard)?.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                  {
+                    dashboards.find((d) => d.id === selectedDashboard)
+                      ?.description
+                  }
+                </p>
+              </div>
 
-            {/* Charts */}
-            <div className="w-full">
-              {selectedDashboard === 0 && <Dashboard1 />}
+              {/* Charts */}
+              <div className="w-full">{selectedContent}</div>
 
-              {selectedDashboard === 1 && <Dashboard2 />}
-
-              {selectedDashboard === 2 && <Dashboard3 />}
-
-              {selectedDashboard === 3 && <Dashboard4 />}
-            </div>
-
-            {/* Dashboard Footer */}
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
-                ✓ נתונים מעודכנים בזמן אמת
-              </p>
-              <button className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-primary-700 transition-colors text-xs sm:text-sm font-medium w-full sm:w-auto">
-                ייצא דוח ל-Excel
-              </button>
-            </div>
-          </motion.div>
+              {/* Dashboard Footer */}
+              <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
+                  ✓ נתונים מעודכנים בזמן אמת
+                </p>
+                <button className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-primary-700 transition-colors text-xs sm:text-sm font-medium w-full sm:w-auto">
+                  ייצא דוח ל-Excel
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Features Grid */}
           <motion.div

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import mixpanel from "mixpanel-browser";
 import { cn } from "@/lib/utils";
 
 interface ContactFormProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -60,14 +61,29 @@ const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
           });
           // Reset success message after 5 seconds
           setTimeout(() => setFormState("idle"), 5000);
+          mixpanel.track("Contact Form Submitted", {
+            form_name: "Contact Us",
+            submission_status: "success",
+          });
         } else {
           setFormState("error");
           setTimeout(() => setFormState("idle"), 5000);
+          const data = await response.json();
+          mixpanel.track("Contact Form Submission Failed", {
+            form_name: "Contact Us",
+            error_message: data.errors
+              ?.map((error: any) => error.message)
+              .join(", "),
+          });
         }
       } catch (error) {
         console.error("Error sending form:", error);
         setFormState("error");
         setTimeout(() => setFormState("idle"), 5000);
+        mixpanel.track("Contact Form Submission Failed", {
+          form_name: "Contact Us",
+          error_message: "Unknown error",
+        });
       }
     };
 

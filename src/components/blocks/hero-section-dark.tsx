@@ -2,6 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import hrDashboard from "@/assets/images/hr_dashboard.png";
 import { motion, useReducedMotion } from "motion/react";
+import mixpanel from "mixpanel-browser";
 
 // Enhanced mobile detection with performance optimization
 const useIsMobile = () => {
@@ -435,6 +436,20 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       // Use mobile-optimized animations on mobile devices
       return isMobile ? mobileAnimations : heroAnimations;
     }, [shouldReduceMotion, isMobile]);
+
+    const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      mixpanel.track("Hero CTA Click", {
+        button_text: ctaText,
+        target_section: ctaHref,
+      });
+
+      const element = document.querySelector(ctaHref);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
     return (
       <div className={cn("relative", className)} ref={ref} {...props}>
         <div
@@ -522,6 +537,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                   <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white dark:bg-gray-950 text-xs sm:text-sm font-medium backdrop-blur-3xl">
                     <a
                       href={ctaHref}
+                      onClick={handleCTAClick}
                       className="inline-flex rounded-full text-center group items-center w-full justify-center bg-gradient-to-tr from-zinc-300/20 via-purple-400/30 to-transparent dark:from-zinc-300/5 dark:via-purple-400/20 text-gray-900 dark:text-white border-input border-[1px] hover:bg-gradient-to-tr hover:from-zinc-300/30 hover:via-purple-400/40 hover:to-transparent dark:hover:from-zinc-300/10 dark:hover:via-purple-400/30 transition-all sm:w-auto py-3 sm:py-4 px-6 sm:px-10 text-base sm:text-lg font-semibold">
                       {ctaText}
                     </a>

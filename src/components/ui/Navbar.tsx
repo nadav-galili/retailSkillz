@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import retailSkillz from "@/assets/images/retailSkillz.png";
 import { motion } from "motion/react";
+import mixpanel from "mixpanel-browser";
 
 interface NavItem {
   label: string;
@@ -21,6 +22,12 @@ export const Navbar: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
+
+      // Track navigation click event
+      mixpanel.track("Navbar Link Click", {
+        section_id: href,
+        section_name: navItems.find((item) => item.href === href)?.label,
+      });
     }
   };
 
@@ -126,7 +133,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed top-32 sm:top-32 left-0 w-full bg-white shadow-lg z-40 max-h-96 overflow-y-auto">
+            className="md:hidden fixed top-20 left-0 w-full bg-white shadow-lg z-40 max-h-96 overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a
