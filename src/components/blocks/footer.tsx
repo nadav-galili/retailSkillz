@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import mixpanel from "mixpanel-browser";
+
 export const Footer: React.FC = () => {
   const handleAccessibilityClick = () => {
-    mixpanel.track("Accessibility Page clicked");
-    window.location.href = "/accessibility";
+    mixpanel.track("Accessibility Link Clicked");
   };
 
   return (
@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           <Link
             to="/accessibility"
             onClick={handleAccessibilityClick}
-            className="text-sm text-gray-600 hover:text-gray-900  underline transition-colors">
+            className="text-sm text-gray-600 hover:text-gray-900 hover:underline transition-colors">
             הצהרת נגישות
           </Link>
         </div>
