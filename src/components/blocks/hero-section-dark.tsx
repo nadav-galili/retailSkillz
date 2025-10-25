@@ -376,17 +376,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
 
     return (
       <div className={cn("relative", className)} ref={ref} {...props}>
-        <div
-          className={cn(
-            "absolute top-0 z-[0] h-screen w-screen",
-            // Highly optimized gradients for mobile - simpler and more performant
-            isMobile
-              ? "bg-gradient-to-b from-purple-50/20 via-transparent to-transparent dark:from-purple-900/10 dark:via-transparent dark:to-transparent"
-              : "bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.12),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))]",
-            // Add hardware acceleration hint for mobile
-            isMobile && "transform-gpu will-change-auto"
-          )}
-        />
+        <div className="absolute top-0 z-[0] h-screen w-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(59,130,246,0.15),rgba(255,255,255,0))]" />
         <section className="relative max-w-full mx-auto z-1">
           <div className="max-w-screen-xl z-10 mx-auto px-4 py-12 sm:py-20 md:py-28 gap-12 md:px-8">
             <motion.div

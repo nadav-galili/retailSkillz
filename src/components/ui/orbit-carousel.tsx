@@ -4,7 +4,7 @@ import hrDashboard from "@/assets/images/hr_dashboard.png";
 import dashboardExp from "@/assets/images/dashboard_exp.png";
 import usersTable from "@/assets/images/users_table_exm.png";
 import coursesExm from "@/assets/images/courses_exm.png";
-import foodRegExm from "@/assets/images/food_reg_exm.png";
+import statsByDept from "@/assets/images/stats_by_dep.png";
 
 export default function OrbitCarousel() {
   const [rotation, setRotation] = useState(0);
@@ -20,13 +20,13 @@ export default function OrbitCarousel() {
   const images = [
     { id: 1, url: hrDashboard, label: "HR Dashboard" },
     { id: 2, url: dashboardExp, label: "Dashboard Experience" },
-    { id: 3, url: foodRegExm, label: "Food Registration Example" },
     { id: 4, url: coursesExm, label: "Courses Example" },
     {
       id: 5,
       url: usersTable,
       label: "Users Table Example",
     },
+    { id: 6, url: statsByDept, label: "Stats by Department" },
   ];
 
   const numImages = images.length;
