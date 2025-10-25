@@ -22,29 +22,29 @@ export function LandingPage() {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Spacer for fixed navbar */}
       <div className="h-16"></div>
 
       {/* Hero Section */}
-      <section id="hero" className=" pb-20 px-4 sm:px-6 lg:px-8 text-center">
+      <section id="hero" className="pb-20 px-4 sm:px-6 lg:px-8 text-center">
         <HeroSection />
       </section>
 
       {/* Problem/Solution Section */}
-      <section id="problem-solution" className="py-0">
+      <section id="problem-solution" className="py-16 sm:py-24 bg-white">
         <ProblemSolutionSection />
       </section>
 
       {/* Dashboards Showcase Section */}
-      <section id="dashboards" className="py-0 bg-white">
+      <section id="dashboards" className="py-16 sm:py-24 bg-white">
         <DashboardsShowcase />
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-0 bg-gray-50">
+      <section id="features" className="py-16 sm:py-24 bg-white">
         <FeaturesSection />
       </section>
 
@@ -54,7 +54,7 @@ export function LandingPage() {
       </section> */}
 
       {/* Contact Form Section */}
-      <section id="contact" className="py-0 bg-white">
+      <section id="contact" className="py-16 sm:py-24 bg-white">
         <ContactForm />
       </section>
 

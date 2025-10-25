@@ -1,8 +1,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import hrDashboard from "@/assets/images/hr_dashboard.png";
+
 import { motion, useReducedMotion } from "motion/react";
 import mixpanel from "mixpanel-browser";
+import OrbitCarousel from "../ui/orbit-carousel";
 
 // Enhanced mobile detection with performance optimization
 const useIsMobile = () => {
@@ -287,96 +288,19 @@ interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
   ctaText?: string;
   ctaHref?: string;
-  bottomImage?: {
-    light: string;
-    dark: string;
-  };
-  gridOptions?: {
-    angle?: number;
-    cellSize?: number;
-    opacity?: number;
-    lightLineColor?: string;
-    darkLineColor?: string;
-  };
 }
-
-const RetroGrid = ({
-  angle = 65,
-  cellSize = 60,
-  opacity = 0.5,
-  lightLineColor = "gray",
-  darkLineColor = "gray",
-  isMobile = false,
-}) => {
-  // Mobile-first optimization - dramatically reduce grid complexity
-  const mobileOptimizedStyles = {
-    "--cell-size": isMobile ? `${cellSize * 1.5}px` : `${cellSize}px`, // Larger cells for mobile
-    "--opacity": isMobile ? opacity * 0.2 : opacity, // Much lower opacity on mobile
-    "--light-line": isMobile ? "rgba(156, 163, 175, 0.15)" : lightLineColor, // Ultra-light lines
-    "--dark-line": isMobile ? "rgba(75, 85, 99, 0.15)" : darkLineColor,
-  } as React.CSSProperties;
-
-  // Ultra-simplified static grid for mobile - no animations, no 3D transforms
-  if (isMobile) {
-    return (
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden transform-gpu"
-        style={mobileOptimizedStyles}>
-        {/* Minimal static pattern for mobile - no complex gradients */}
-        <div
-          className="absolute inset-0 opacity-[var(--opacity)]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, var(--light-line) 1px, transparent 1px),
-              linear-gradient(to bottom, var(--light-line) 1px, transparent 1px)
-            `,
-            backgroundSize: "var(--cell-size) var(--cell-size)",
-            transform: "translate3d(0, 0, 0)", // Force hardware acceleration
-          }}
-        />
-        {/* Simplified fade overlay - no complex gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent dark:from-gray-900/80" />
-      </div>
-    );
-  }
-
-  // Desktop version with optimized transforms
-  const gridStyles = {
-    "--grid-angle": `${angle}deg`,
-    ...mobileOptimizedStyles,
-  } as React.CSSProperties;
-
-  return (
-    <div
-      className={cn(
-        "pointer-events-none absolute size-full overflow-hidden [perspective:200px] transform-gpu",
-        `opacity-[var(--opacity)]`
-      )}
-      style={gridStyles}>
-      <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))] will-change-transform">
-        <div className="animate-grid [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent to-90% dark:from-black" />
-    </div>
-  );
-};
 
 const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
   (
     {
       className,
       subtitle = {
-        regular: "מערכת למידה דיגיטילת לעולם הקמעונאות - ",
+        regular: "מערכת למידה דיגיטילית לעולם הקמעונאות - ",
         gradient: "גישה מכל מקום, בכל זמן, ללא התקנות והטמעות",
       },
       description = "פלטפורמת Retail-Skillz מאפשרת לכם לנהל הכשרות עובדים בעולם הקמעונאות ברמה הגבוהה ביותר: דשבורד בזמן אמת, ניתוחי AI, אבטחת מידע מתקדמת ותמיכה טלפונית . המערכת פועלת מכל מכשיר עם סיסמא מאובטחת",
       ctaText = "קבלו הצעת מחיר בהתאמה אישית",
       ctaHref = "#contact",
-      bottomImage = {
-        light: hrDashboard,
-        dark: hrDashboard,
-      },
-      gridOptions,
       ...props
     },
     ref
@@ -452,19 +376,8 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
 
     return (
       <div className={cn("relative", className)} ref={ref} {...props}>
-        <div
-          className={cn(
-            "absolute top-0 z-[0] h-screen w-screen",
-            // Highly optimized gradients for mobile - simpler and more performant
-            isMobile
-              ? "bg-gradient-to-b from-purple-50/20 via-transparent to-transparent dark:from-purple-900/10 dark:via-transparent dark:to-transparent"
-              : "bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.12),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))]",
-            // Add hardware acceleration hint for mobile
-            isMobile && "transform-gpu will-change-auto"
-          )}
-        />
+        <div className="absolute top-0 z-[0] h-screen w-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(59,130,246,0.15),rgba(255,255,255,0))]" />
         <section className="relative max-w-full mx-auto z-1">
-          <RetroGrid {...gridOptions} isMobile={isMobile} />
           <div className="max-w-screen-xl z-10 mx-auto px-4 py-12 sm:py-20 md:py-28 gap-12 md:px-8">
             <motion.div
               className="space-y-5 max-w-4xl leading-0 lg:leading-5 mx-auto text-center"
@@ -545,119 +458,15 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                 </span>
               </motion.div>
             </motion.div>
-            {bottomImage && (
-              <motion.div
-                className="mt-12 sm:mt-16 md:mt-20 mx-4 sm:mx-10 relative z-10"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={animations.image}
-                data-will-change={isMobile ? "true" : undefined}>
-                <motion.div
-                  className={cn(
-                    "relative",
-                    // Optimized hardware acceleration for mobile
-                    isMobile &&
-                      "transform-gpu will-change-transform backface-hidden"
-                  )}
-                  animate={
-                    !shouldReduceMotion && !isMobile
-                      ? animations.imageFloat
-                      : undefined
-                  }
-                  style={
-                    isMobile
-                      ? {
-                          transform: "translate3d(0, 0, 0)",
-                          WebkitBackfaceVisibility: "hidden",
-                          backfaceVisibility: "hidden",
-                        }
-                      : {
-                          perspective: "1000px",
-                        }
-                  }>
-                  <motion.img
-                    src={bottomImage.light}
-                    className={cn(
-                      "w-full shadow-2xl rounded-lg border border-gray-200 dark:hidden",
-                      // Mobile-optimized classes
-                      isMobile
-                        ? "transform-gpu will-change-auto backface-hidden"
-                        : "transform-gpu will-change-transform"
-                    )}
-                    alt="מערכת ניהול סרטוני למידה עם דשבורד מתקדם"
-                    whileHover={
-                      !shouldReduceMotion && !isMobile
-                        ? {
-                            scale: 1.03,
-                            y: -8,
-                            rotateX: -2,
-                            boxShadow: "0 35px 60px -12px rgba(0, 0, 0, 0.3)",
-                            transition: {
-                              duration: 0.4,
-                              ease: "easeOut",
-                            },
-                          }
-                        : undefined // Remove mobile hover completely to prevent flicker
-                    }
-                    style={
-                      isMobile
-                        ? {
-                            transform: "translate3d(0, 0, 0)",
-                            WebkitBackfaceVisibility: "hidden",
-                            backfaceVisibility: "hidden",
-                            WebkitFontSmoothing: "antialiased",
-                          }
-                        : {
-                            transformStyle: "preserve-3d",
-                          }
-                    }
-                  />
-                  <motion.img
-                    src={bottomImage.dark}
-                    className={cn(
-                      "hidden w-full shadow-2xl rounded-lg border border-gray-800 dark:block",
-                      // Mobile-optimized classes
-                      isMobile
-                        ? "transform-gpu will-change-auto backface-hidden"
-                        : "transform-gpu will-change-transform"
-                    )}
-                    alt="מערכת ניהול סרטוני למידה עם דשבורד מתקדם"
-                    whileHover={
-                      !shouldReduceMotion && !isMobile
-                        ? {
-                            scale: 1.03,
-                            y: -8,
-                            rotateX: -2,
-                            boxShadow: "0 35px 60px -12px rgba(0, 0, 0, 0.4)",
-                            transition: {
-                              duration: 0.4,
-                              ease: "easeOut",
-                            },
-                          }
-                        : undefined // Remove mobile hover completely to prevent flicker
-                    }
-                    style={
-                      isMobile
-                        ? {
-                            transform: "translate3d(0, 0, 0)",
-                            WebkitBackfaceVisibility: "hidden",
-                            backfaceVisibility: "hidden",
-                            WebkitFontSmoothing: "antialiased",
-                          }
-                        : {
-                            transformStyle: "preserve-3d",
-                          }
-                    }
-                  />
-
-                  {/* Subtle glow effect for premium feel - disabled on mobile for performance */}
-                  {!isMobile && (
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 transition-opacity duration-300 hover:opacity-100 pointer-events-none" />
-                  )}
-                </motion.div>
-              </motion.div>
-            )}
+            <motion.div
+              className="mt-12 sm:mt-16 md:mt-20 mx-4 sm:mx-10 relative z-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={animations.image}
+              data-will-change={isMobile ? "true" : undefined}>
+              <OrbitCarousel />
+            </motion.div>
           </div>
         </section>
       </div>
