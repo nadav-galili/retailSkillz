@@ -6,6 +6,7 @@ import lighthouse from "@/assets/images/lighthouse.png";
 import retailSkillz from "@/assets/images/retailSkillz.png";
 import { motion, useReducedMotion } from "motion/react";
 import mixpanel from "mixpanel-browser";
+import OrbitCarousel from "../ui/orbit-carousel";
 
 // Enhanced mobile detection with performance optimization
 const useIsMobile = () => {
@@ -281,158 +282,6 @@ const mobileAnimations = {
   imageFloat: {},
 };
 
-const MobileHeroCarousel = () => {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  const images = [
-    { id: 1, url: hrDashboard, label: "HR Dashboard" },
-    { id: 2, url: dashboardExp, label: "Dashboard Experience" },
-    { id: 3, url: lighthouse, label: "Lighthouse Score" },
-    { id: 4, url: retailSkillz, label: "RetailSkillz Logo" },
-  ];
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-  return (
-    <div className="relative w-full max-w-md mx-auto h-[250px] rounded-lg shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-      {images.map((image, index) => (
-        <motion.img
-          key={image.id}
-          src={image.url}
-          alt={image.label}
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: index === currentIndex ? 1 : 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          style={{ willChange: "opacity" }}
-        />
-      ))}
-      <div className="absolute bottom-0 left-0 w-full h-2/5 bg-gradient-to-t from-black/60 to-transparent" />
-      <div className="absolute bottom-4 left-4 text-white">
-        <motion.p
-          key={currentIndex}
-          className="font-bold text-lg drop-shadow-md"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}>
-          {images[currentIndex].label}
-        </motion.p>
-      </div>
-    </div>
-  );
-};
-
-const HeroCarousel = () => {
-  const [rotation, setRotation] = React.useState(0);
-  const [isHovering, setIsHovering] = React.useState(false);
-  const [isSnapping, setIsSnapping] = React.useState(false);
-  const containerRef = React.useRef(null);
-
-  const zDepth = 450;
-  const imageSize = 300;
-  const borderRadius = 12;
-  const backfaceVisible = false;
-  const pauseOnHover = true;
-
-  const images = [
-    { id: 1, url: hrDashboard, label: "HR Dashboard" },
-    { id: 2, url: dashboardExp, label: "Dashboard Experience" },
-    { id: 3, url: lighthouse, label: "Lighthouse Score" },
-    { id: 4, url: retailSkillz, label: "RetailSkillz Logo" },
-    { id: 5, url: hrDashboard, label: "HR Dashboard" },
-    { id: 6, url: dashboardExp, label: "Dashboard Experience" },
-  ];
-
-  const numImages = images.length;
-  const angleSlice = 360 / numImages;
-
-  React.useEffect(() => {
-    if ((isHovering && pauseOnHover) || isSnapping) return;
-
-    const interval = setInterval(() => {
-      setRotation((prev) => (prev + 0.5) % 360);
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [isHovering, pauseOnHover, isSnapping]);
-
-  const handleImageClick = (index: number) => {
-    setIsSnapping(true);
-    const targetRotation = -index * angleSlice;
-    setRotation(targetRotation % 360);
-    setTimeout(() => {
-      setIsSnapping(false);
-    }, 600);
-  };
-
-  return (
-    <div className="relative w-full h-[550px] flex flex-col items-center justify-center overflow-hidden">
-      <div
-        ref={containerRef}
-        className="relative w-full h-full flex items-center justify-center"
-        style={{ perspective: "1200px" }}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}>
-        <motion.div
-          className="relative"
-          style={{
-            width: imageSize * 2,
-            height: imageSize * 2,
-            transformStyle: "preserve-3d",
-          }}
-          animate={{ rotateY: rotation }}
-          transition={
-            isSnapping
-              ? { type: "tween", duration: 0.5, ease: "easeOut" }
-              : { type: "tween", duration: 0.05, ease: "linear" }
-          }>
-          {images.map((image, index) => {
-            const angle = index * angleSlice;
-
-            return (
-              <motion.div
-                key={image.id}
-                className="absolute cursor-pointer"
-                style={{
-                  width: imageSize,
-                  height: imageSize,
-                  left: "50%",
-                  top: "50%",
-                  marginLeft: -imageSize / 2,
-                  marginTop: -imageSize / 2,
-                  transformStyle: "preserve-3d",
-                  backfaceVisibility: backfaceVisible ? "visible" : "hidden",
-                  transform: `rotateY(${angle}deg) translateZ(${zDepth}px)`,
-                }}
-                onClick={() => handleImageClick(index)}
-                whileHover={{ scale: 1.15, z: 10 }}>
-                <div
-                  className={`w-full h-full rounded-lg shadow-2xl overflow-hidden cursor-pointer transition-transform ring-2 ring-white`}
-                  style={{ borderRadius: `${borderRadius}px` }}>
-                  <img
-                    src={image.url}
-                    alt={image.label}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <div className="text-white text-center font-bold text-lg drop-shadow-lg">
-                      {image.label}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </div>
-  );
-};
-
 interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   subtitle?: {
@@ -629,7 +478,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               viewport={{ once: true, margin: "-100px" }}
               variants={animations.image}
               data-will-change={isMobile ? "true" : undefined}>
-              {isMobile ? <MobileHeroCarousel /> : <HeroCarousel />}
+              <OrbitCarousel />
             </motion.div>
           </div>
         </section>
