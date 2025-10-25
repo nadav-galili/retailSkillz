@@ -2,16 +2,17 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import hrDashboard from "@/assets/images/hr_dashboard.png";
 import dashboardExp from "@/assets/images/dashboard_exp.png";
-import lighthouse from "@/assets/images/lighthouse.png";
-import retailSkillz from "@/assets/images/retailSkillz.png";
+import usersTable from "@/assets/images/users_table_exm.png";
+import coursesExm from "@/assets/images/courses_exm.png";
+import foodRegExm from "@/assets/images/food_reg_exm.png";
 
 export default function OrbitCarousel() {
   const [rotation, setRotation] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const containerRef = useRef(null);
 
-  const zDepth = 350;
-  const imageSize = 175;
+  const zDepth = 450;
+  const imageSize = 350;
   const borderRadius = 12;
   const backfaceVisible = false;
   const pauseOnHover = true;
@@ -19,17 +20,12 @@ export default function OrbitCarousel() {
   const images = [
     { id: 1, url: hrDashboard, label: "HR Dashboard" },
     { id: 2, url: dashboardExp, label: "Dashboard Experience" },
-    { id: 3, url: lighthouse, label: "Lighthouse Score" },
-    { id: 4, url: retailSkillz, label: "RetailSkillz Logo" },
+    { id: 3, url: foodRegExm, label: "Food Registration Example" },
+    { id: 4, url: coursesExm, label: "Courses Example" },
     {
       id: 5,
-      url: "https://images.unsplash.com/photo-1760341332217-e6c24d1e142c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&h=400",
-      label: "Mountain Tree",
-    },
-    {
-      id: 6,
-      url: "https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=400&h=400&fit=crop",
-      label: "Stars",
+      url: usersTable,
+      label: "Users Table Example",
     },
   ];
 

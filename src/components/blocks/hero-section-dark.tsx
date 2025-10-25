@@ -1,9 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import hrDashboard from "@/assets/images/hr_dashboard.png";
-import dashboardExp from "@/assets/images/dashboard_exp.png";
-import lighthouse from "@/assets/images/lighthouse.png";
-import retailSkillz from "@/assets/images/retailSkillz.png";
+
 import { motion, useReducedMotion } from "motion/react";
 import mixpanel from "mixpanel-browser";
 import OrbitCarousel from "../ui/orbit-carousel";
