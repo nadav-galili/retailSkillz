@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  font-family: "Geist", sans-serif;
+}
+
 /* Custom utilities for enhanced hero animations */
 .perspective-1000 {
   perspective: 1000px;
@@ -97,7 +101,14 @@
   }
 
   /* Optimize text rendering on mobile */
-  h1, h2, h3, h4, h5, h6, p, span {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

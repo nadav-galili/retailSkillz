@@ -5,6 +5,7 @@ import {
   ClipboardList,
   BarChart2,
   BrainCircuit,
+  Users,
 } from "lucide-react";
 import mixpanel from "mixpanel-browser";
 
@@ -380,8 +381,12 @@ const aiAnalysisData = {
   },
   aiInsight: {
     title: "תובנת AI עבור דנה כהן",
-    description:
-      "העובדת מציגה ביצועים מעולים בקורסי בטיחות מזון אך זקוקה לחיזוק בנושא שיֿרות לקוחות. מומלץ להתמקד בהדרכה אישית ותרגול מעשי",
+    description: `- בטיחות מזון: השלמה מהירה ב-15% | דיוק 94% (גבוה ב-9% מהממוצע)
+- שירות לקוחות: זמן השלמה איטי ב-70% מהעובדים | ציון סופי 68% (נמוך ב-16 נקודות)
+- נקודות תורפה מזוהות: שאלות 4, 7, 12 (טיפול בתלונות) - שיעור הצלחה 45%
+- זמן ממוצע לשאלה: 3.2 דקות (ממוצע ארגוני: 1.8 דקות)
+
+**המלצת AI:** פער משמעותי בשירות לקוחות. נדרשת התערבות מיידית - 3 מודולים ממוקדים + תרגול מעשי.`,
     confidence: 92,
     icon: "✨",
     backgroundColor: "bg-blue-50 dark:bg-blue-950/20",
@@ -502,6 +507,91 @@ const Dashboard4 = () => (
   </div>
 );
 
+const DepartmentsPerformanceDashboard = () => {
+  const departmentsData = [
+    {
+      name: "שימורים ויבשים",
+      performance: 78.9,
+      completion: 66.9,
+      users: 422,
+      color: "bg-green-500",
+    },
+    {
+      name: "בשר",
+      performance: 72.7,
+      completion: 52.7,
+      users: 121,
+      color: "bg-red-500",
+    },
+    {
+      name: "חלב",
+      performance: 86.9,
+      completion: 76.9,
+      users: 385,
+      color: "bg-blue-500",
+    },
+    {
+      name: "קופות",
+      performance: 46.7,
+      completion: 36.7,
+      users: 28,
+      color: "bg-blue-600",
+    },
+    {
+      name: "פארם",
+      performance: 61.6,
+      completion: 51.6,
+      users: 28,
+      color: "bg-purple-500",
+    },
+    {
+      name: "קפואים",
+      performance: 54.8,
+      completion: 44.8,
+      users: 31,
+      color: "bg-orange-500",
+    },
+  ];
+
+  return (
+    <div className="p-4 sm:p-6 bg-gray-50 dark:bg-gray-900/50 rounded-lg">
+      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-right">
+        מפת ביצועי הארגון
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {departmentsData.map((dept, index) => (
+          <div
+            key={index}
+            className={`${dept.color} rounded-2xl p-5 text-white shadow-lg flex flex-col justify-between min-h-[200px]`}>
+            <div className="flex-grow">
+              <h4 className="font-bold text-lg">{dept.name}</h4>
+              <p className="text-sm opacity-80">ציון ביצועים</p>
+              <p className="text-4xl sm:text-5xl font-bold my-1">
+                {dept.performance}%
+              </p>
+            </div>
+            <div className="w-full bg-black bg-opacity-20 rounded-full h-1.5 mt-2">
+              <div
+                className="bg-white h-1.5 rounded-full"
+                style={{ width: `${dept.completion}%` }}></div>
+            </div>
+            <div className="flex justify-between items-center text-sm mt-2 pt-2 border-t border-white/20">
+              <div>
+                <span className="opacity-80">השלמה: </span>
+                <span className="font-semibold">{dept.completion}%</span>
+              </div>
+              <div>
+                <span className="opacity-80">משתמשים: </span>
+                <span className="font-semibold">{dept.users}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const DashboardsShowcase = React.forwardRef<
   HTMLDivElement,
   DashboardsShowcaseProps
@@ -517,11 +607,25 @@ const DashboardsShowcase = React.forwardRef<
   ) => {
     const dashboards = [
       {
+        id: "departments-performance",
+        title: "ביצוע לפי מחלקות",
+        description: "מעקב על סטטוס ההכשרות לכל מחלקה",
+        icon: Users,
+        content: <DepartmentsPerformanceDashboard />,
+      },
+      {
         id: "progress",
-        title: "התקדמות הכשרות",
+        title: "התקדמות עובדים",
         description: "מעקב על סטטוס ההכשרות לכל עובד",
         icon: TrendingUp,
         content: <Dashboard1 />,
+      },
+      {
+        id: "ai",
+        title: "ניתוח AI של עובדים",
+        description: "תובנות והמלצות אישיות",
+        icon: BrainCircuit,
+        content: <Dashboard4 />,
       },
       {
         id: "kpi",
@@ -536,13 +640,6 @@ const DashboardsShowcase = React.forwardRef<
         description: "תכנון למידה אישי וניהול זמן ",
         icon: ClipboardList,
         content: <Dashboard3 />,
-      },
-      {
-        id: "ai",
-        title: "ניתוח AI של עובדים",
-        description: "תובנות והמלצות אישיות",
-        icon: BrainCircuit,
-        content: <Dashboard4 />,
       },
     ];
 
@@ -605,7 +702,7 @@ const DashboardsShowcase = React.forwardRef<
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-primary-500 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
               {title}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -678,7 +775,7 @@ const DashboardsShowcase = React.forwardRef<
           </AnimatePresence>
 
           {/* Features Grid */}
-          <motion.div
+          {/*   <motion.div
             className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mt-8 sm:mt-12"
             variants={containerVariants}
             initial="hidden"
@@ -721,7 +818,7 @@ const DashboardsShowcase = React.forwardRef<
                 </p>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     );

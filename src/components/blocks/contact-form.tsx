@@ -72,7 +72,7 @@ const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
           mixpanel.track("Contact Form Submission Failed", {
             form_name: "Contact Us",
             error_message: data.errors
-              ?.map((error: any) => error.message)
+              ?.map((error: { message: string }) => error.message)
               .join(", "),
           });
         }
@@ -127,7 +127,7 @@ const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-primary-500 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
               {title}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">

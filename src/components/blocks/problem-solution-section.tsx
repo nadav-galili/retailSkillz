@@ -1,63 +1,153 @@
 import React from "react";
 import { motion } from "motion/react";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import {
+  BarChart3,
+  CloudCog,
+  GraduationCap,
+  Target,
+  Zap,
+  Sparkles,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface ProblemSolutionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   subtitle?: string;
 }
 
-const problems = [
-  {
-    title: "הכשרות לא אחידות וללא מעקב מרכזי",
-    description:
-      "כל סניף מכשיר עובדים בצורה שונה, קשה לוודא שהמידע מועבר באופן אחיד ואין דרך למעקב אחר ההתקדמות",
-    icon: AlertCircle,
+const accentStyles = {
+  emerald: {
+    card: "border-emerald-200/60 dark:border-emerald-900/40",
+    glow: "from-emerald-400/20 via-emerald-300/10 to-transparent",
+    icon: "bg-emerald-500/10 text-emerald-500 dark:text-emerald-300",
+    userPanel:
+      "border-emerald-200/70 bg-emerald-50/70 dark:bg-emerald-950/30 dark:border-emerald-900/40",
+    orgPanel:
+      "border-emerald-200/70 bg-white/70 dark:bg-gray-950/40 dark:border-emerald-900/40",
+    userBadge:
+      "border-emerald-200/80 bg-emerald-100/70 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200",
+    orgBadge:
+      "border-emerald-200/80 bg-white/60 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-100",
   },
-  {
-    title: "עלויות הכשרה גבוהות וצריכת זמן רבה",
-    description:
-      "הכשרות פנים אל פנים דורשות הקדשת משאבי אנוש יקרים, במיוחד כשצריך לחזור על החומר לכל עובד חדש",
-    icon: AlertCircle,
+  sky: {
+    card: "border-sky-200/60 dark:border-sky-900/40",
+    glow: "from-sky-400/20 via-sky-300/10 to-transparent",
+    icon: "bg-sky-500/10 text-sky-500 dark:text-sky-300",
+    userPanel:
+      "border-sky-200/70 bg-sky-50/70 dark:bg-sky-950/30 dark:border-sky-900/40",
+    orgPanel:
+      "border-sky-200/70 bg-white/70 dark:bg-gray-950/40 dark:border-sky-900/40",
+    userBadge:
+      "border-sky-200/80 bg-sky-100/70 text-sky-700 dark:bg-sky-900/40 dark:text-sky-200",
+    orgBadge:
+      "border-sky-200/80 bg-white/60 text-sky-700 dark:bg-sky-950/40 dark:text-sky-100",
   },
-  {
-    title: "קשה למדוד יעילות ההכשרות",
-    description:
-      "אין דרך לדעת אם העובדים באמת הבינו את החומר או זוכרים אותו, וקשה לזהות פערי ידע",
-    icon: AlertCircle,
+  amber: {
+    card: "border-amber-200/60 dark:border-amber-900/40",
+    glow: "from-amber-400/25 via-amber-300/10 to-transparent",
+    icon: "bg-amber-500/10 text-amber-500 dark:text-amber-300",
+    userPanel:
+      "border-amber-200/70 bg-amber-50/70 dark:bg-amber-950/20 dark:border-amber-900/40",
+    orgPanel:
+      "border-amber-200/70 bg-white/70 dark:bg-gray-950/40 dark:border-amber-900/40",
+    userBadge:
+      "border-amber-200/80 bg-amber-100/70 text-amber-700 dark:bg-amber-900/40 dark:text-amber-200",
+    orgBadge:
+      "border-amber-200/80 bg-white/60 text-amber-700 dark:bg-amber-950/40 dark:text-amber-100",
   },
-  {
-    title: "אובדן ידע כשעובדים עוזבים",
-    description:
-      "כשעובד מנוסה עוזב, כל הידע והניסיון שלו הולכים איתו - אין דרך לשמר ולהעביר את המידע לאחרים",
-    icon: AlertCircle,
+  violet: {
+    card: "border-violet-200/60 dark:border-violet-900/40",
+    glow: "from-violet-400/25 via-violet-300/10 to-transparent",
+    icon: "bg-violet-500/10 text-violet-500 dark:text-violet-300",
+    userPanel:
+      "border-violet-200/70 bg-violet-50/70 dark:bg-violet-950/30 dark:border-violet-900/40",
+    orgPanel:
+      "border-violet-200/70 bg-white/70 dark:bg-gray-950/40 dark:border-violet-900/40",
+    userBadge:
+      "border-violet-200/80 bg-violet-100/70 text-violet-700 dark:bg-violet-900/40 dark:text-violet-200",
+    orgBadge:
+      "border-violet-200/80 bg-white/60 text-violet-700 dark:bg-violet-950/40 dark:text-violet-100",
   },
-];
+  fuchsia: {
+    card: "border-fuchsia-200/60 dark:border-fuchsia-900/40",
+    glow: "from-fuchsia-400/25 via-fuchsia-300/10 to-transparent",
+    icon: "bg-fuchsia-500/10 text-fuchsia-500 dark:text-fuchsia-300",
+    userPanel:
+      "border-fuchsia-200/70 bg-fuchsia-50/70 dark:bg-fuchsia-950/30 dark:border-fuchsia-900/40",
+    orgPanel:
+      "border-fuchsia-200/70 bg-white/70 dark:bg-gray-950/40 dark:border-fuchsia-900/40",
+    userBadge:
+      "border-fuchsia-200/80 bg-fuchsia-100/70 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-200",
+    orgBadge:
+      "border-fuchsia-200/80 bg-white/60 text-fuchsia-700 dark:bg-fuchsia-950/40 dark:text-fuchsia-100",
+  },
+} as const;
 
-const solutions = [
+interface SolutionItem {
+  title: string;
+  icon: LucideIcon;
+  accent: keyof typeof accentStyles;
+  userBenefit: string;
+  orgBenefit: string;
+}
+
+const solutions: SolutionItem[] = [
   {
-    title: "פלטפורמת ענן מרכזית לכל הארגון",
-    description:
-      "מערכת אחידה לכל הסניפים עם גישה מאובטחת מכל מכשיר - מחשב, טאבלט או נייד, ללא צורך בהתקנות",
-    icon: CheckCircle2,
+    title: " פלטפורמה ענן מרכזית לכל הארגון",
+    icon: CloudCog,
+    accent: "emerald",
+    userBenefit:
+      "גישה נוחה מכל מכשיר – מחשב, טאבלט או נייד. כל התכנים והלימודים שלך זמינים בכל מקום ובכל זמן, בלי להתקין אפליקציות.",
+    orgBenefit:
+      "חיסכון משמעותי בתשתיות IT ותחזוקה. עדכונים אוטומטיים וניהול מרכזי של כל התכנים והנתונים במקום אחד.",
   },
   {
-    title: "דשבורד מנהלים עם מעקב בזמן אמת",
-    description:
-      "דוחות מפורטים על התקדמות כל עובד, ניתוחי AI לזיהוי פערים ויצוא נתונים לאקסל לניתוח נוסף",
-    icon: CheckCircle2,
+    title: " דשבורד מתקדם עם מעקב בזמן אמת",
+    icon: BarChart3,
+    accent: "sky",
+    userBenefit:
+      "רואה בבירור את ההתקדמות שלך, משימות ממתינות, והישגים אישיים. מוטיבציה מובנית להמשיך להתפתח.",
+    orgBenefit:
+      "שליטה מלאה בתהליכי ההכשרה – זיהוי מיידי של פערים, מעקב אחר שיעורי השלמה, וקבלת תובנות לקבלת החלטות מבוססות נתונים.",
   },
   {
-    title: "מערכת בחינות ומבחני ידע אינטראקטיביים",
-    description:
-      "וידוא שהעובדים באמת הבינו את החומר באמצעות מבחנים מותאמים ומעקב אחר שיפור הביצועים",
-    icon: CheckCircle2,
+    title: " מערכת בחינות ומבחני ידע אינטראקטיביים",
+    icon: GraduationCap,
+    accent: "amber",
+    userBenefit:
+      "למידה מעניינת ומגוונת באמצעות מבחנים אינטראקטיביים. קבלת משוב מיידי שעוזר לך להבין את החומר ולזכור אותו לאורך זמן.",
+    orgBenefit:
+      "אימות ידע אמיתי של העובדים, הפחתת טעויות בשטח, ושיפור רמת השירות והמכירות. בניית צוות מיומן ובטוח יותר.",
   },
   {
-    title: "מיתוג מותאם ותמיכה מקצועית",
-    description: "המערכת מותאמת לעיצוב והמותג שלכם, עם תמיכה טלפונית לכל בעיה",
-    icon: CheckCircle2,
+    title: " התקנה מהירה ללא אינטגרציה מורכבת",
+    icon: Zap,
+    accent: "violet",
+    userBenefit:
+      "התחלה מיידית ללא המתנות ותקלות טכניות. נכנסים למערכת ומתחילים ללמוד – פשוט וחלק.",
+    orgBenefit:
+      "אפס צורך באינטגרציה עם מערכות המידע הקיימות. יישום מהיר תוך ימים ספורים, ללא עלויות פיתוח נוספות, סיכונים טכניים או עומס על צוות ה-IT. התחילו להכשיר עובדים עוד היום.",
+  },
+  {
+    title: " מיתוג מותאם ותמיכה מקצועית",
+    icon: Target,
+    accent: "fuchsia",
+    userBenefit:
+      "חווית משתמש מוכרת וידידותית עם לוק אנד פיל של החברה שלך. תחושת שייכות ומקצועיות.",
+    orgBenefit:
+      "מיתוג מלא של המערכת בצבעים, לוגו וסגנון הארגון. תמיכה טכנית מסורה שמבטיחה המשכיות עסקית ושביעות רצון גבוהה.",
+  },
+  {
+    title: "ניתוח AI חכם של ביצועי עובדים",
+    icon: Sparkles, // או Sparkles / BotMessageSquare / Cpu
+    accent: "violet",
+    userBenefit:
+      "קבלת המלצות אישיות מבוססות AI לשיפור הלמידה שלך. המערכת מזהה את נקודות החוזק והחולשה שלך ומציעה תכנים ממוקדים שיעזרו לך להצליח.",
+    orgBenefit:
+      "ניתוח אוטומטי מתקדם של תשובות העובדים במבחנים - זיהוי דפוסי טעויות נפוצים, פערי ידע קריטיים וחיזוי עובדים בסיכון. קבלת תובנות מעמיקות והמלצות מבוססות נתונים לשיפור תוכניות ההכשרה.",
   },
 ];
 
@@ -68,8 +158,8 @@ const ProblemSolutionSection = React.forwardRef<
   (
     {
       className,
-      title = "לעבור מאתגרים בהכשרת עובדים לפתרון מקצועי ומתקדם",
-      subtitle = "הופכים את ההכשרות מעומס יקר לכלי אסטרטגי שמשפר ביצועים, מפחית עלויות ומבטיח עקביות בכל הארגון",
+      title = "הכשרות עובדים - בדרך חכמה , מדידה ומבוססת נתונים.",
+      subtitle = "עלות ההכשרות יורדת בכ-80% והפכת לכלי אסטרטגי שמשפר ביצועים ומבטיח עקביות.",
       ...props
     },
     ref
@@ -122,40 +212,8 @@ const ProblemSolutionSection = React.forwardRef<
           </motion.div>
 
           {/* Problems & Solutions Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-1 gap-8">
             {/* Problems Section */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-4">
-              <h3 className="text-2xl font-semibold text-primary-700 dark:text-primary-400 mb-6">
-                האתגרים שבעלי רשתות קמעונאות מכירים
-              </h3>
-              {problems.map((problem, index) => {
-                const Icon = problem.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    variants={cardVariants}
-                    className="group relative overflow-hidden rounded-lg border border-red-200 dark:border-red-900/50 bg-white dark:bg-gray-900 p-5 hover:shadow-lg transition-all duration-300">
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-transparent dark:from-red-950/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative z-10 flex gap-4">
-                      <Icon className="w-6 h-6 text-red-500 dark:text-red-400 flex-shrink-0 mt-1" />
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                          {problem.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {problem.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
 
             {/* Solutions Section */}
             <motion.div
@@ -163,32 +221,98 @@ const ProblemSolutionSection = React.forwardRef<
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-4">
-              <h3 className="text-2xl font-semibold text-primary-700 dark:text-white mb-6">
-                הפתרונות של מערכת Retail-Skillz
-              </h3>
-              {solutions.map((solution, index) => {
-                const Icon = solution.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    variants={cardVariants}
-                    className="group relative overflow-hidden rounded-lg border border-green-200 dark:border-green-900/50 bg-white dark:bg-gray-900 p-5 hover:shadow-lg transition-all duration-300">
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-transparent dark:from-green-950/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative z-10 flex gap-4">
-                      <Icon className="w-6 h-6 text-green-500 dark:text-green-400 flex-shrink-0 mt-1" />
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                          {solution.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {solution.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              className="space-y-10">
+              <div className="space-y-3 text-right">
+                <span className="inline-flex items-center justify-center rounded-full bg-primary-500/10 px-4 py-1 text-xs font-semibold text-primary-600 dark:text-primary-200">
+                  במה אנחנו שונים
+                </span>
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  הפתרונות של Retail-Skillz מעצימים עובדים ומנהלים בו זמנית
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  הסעיף החדש מדגיש את היתרון התחרותי הכי גדול שלכם – פשטות
+                  ומהירות ביישום, בלי להעמיס על צוות ה-IT.
+                </p>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2">
+                {solutions.map((solution, index) => {
+                  const Icon = solution.icon;
+                  const accent = accentStyles[solution.accent];
+
+                  return (
+                    <motion.div key={index} variants={cardVariants}>
+                      <Card
+                        className={cn(
+                          "group relative overflow-hidden border bg-white/80 text-right shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:bg-gray-900/60",
+                          accent.card
+                        )}>
+                        <div
+                          className={cn(
+                            "absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-80 transition-opacity duration-500 group-hover:opacity-100",
+                            accent.glow
+                          )}
+                        />
+                        <div
+                          className={cn(
+                            "pointer-events-none absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-40",
+                            accent.glow
+                          )}
+                        />
+                        <CardHeader className="relative z-10 flex flex-col gap-4 pb-0">
+                          <div className="flex items-start gap-4">
+                            <span
+                              className={cn(
+                                "flex h-12 w-12 items-center justify-center rounded-2xl border text-lg font-semibold",
+                                accent.icon
+                              )}>
+                              <Icon className="h-5 w-5" />
+                            </span>
+                            <CardTitle className="text-xl font-semibold leading-snug text-primary-500 dark:text-white">
+                              {solution.title}
+                            </CardTitle>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="relative z-10 space-y-4 pt-4">
+                          <div
+                            className={cn(
+                              "rounded-2xl border p-4 text-sm leading-6 shadow-sm transition-colors duration-300",
+                              accent.userPanel
+                            )}>
+                            <Badge
+                              variant="outline"
+                              className={cn(
+                                "mb-2 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold",
+                                accent.userBadge
+                              )}>
+                              לעובד
+                            </Badge>
+                            <p className="text-gray-700 dark:text-gray-200">
+                              {solution.userBenefit}
+                            </p>
+                          </div>
+                          <div
+                            className={cn(
+                              "rounded-2xl border p-4 text-sm leading-6 shadow-sm transition-colors duration-300",
+                              accent.orgPanel
+                            )}>
+                            <Badge
+                              variant="outline"
+                              className={cn(
+                                "mb-2 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold",
+                                accent.orgBadge
+                              )}>
+                              לארגון
+                            </Badge>
+                            <p className="text-gray-700 dark:text-gray-200">
+                              {solution.orgBenefit}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </motion.div>
           </div>
 
