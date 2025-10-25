@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "motion/react";
-import { BarChart3, CloudCog, GraduationCap, Target, Zap } from "lucide-react";
+import {
+  BarChart3,
+  CloudCog,
+  GraduationCap,
+  Target,
+  Zap,
+  Sparkles,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -89,7 +96,7 @@ interface SolutionItem {
 
 const solutions: SolutionItem[] = [
   {
-    title: "📱 פלטפורמה ענן מרכזית לכל הארגון",
+    title: " פלטפורמה ענן מרכזית לכל הארגון",
     icon: CloudCog,
     accent: "emerald",
     userBenefit:
@@ -98,7 +105,7 @@ const solutions: SolutionItem[] = [
       "חיסכון משמעותי בתשתיות IT ותחזוקה. עדכונים אוטומטיים וניהול מרכזי של כל התכנים והנתונים במקום אחד.",
   },
   {
-    title: "💬 דשבורד מתקדם עם מעקב בזמן אמת",
+    title: " דשבורד מתקדם עם מעקב בזמן אמת",
     icon: BarChart3,
     accent: "sky",
     userBenefit:
@@ -107,7 +114,7 @@ const solutions: SolutionItem[] = [
       "שליטה מלאה בתהליכי ההכשרה – זיהוי מיידי של פערים, מעקב אחר שיעורי השלמה, וקבלת תובנות לקבלת החלטות מבוססות נתונים.",
   },
   {
-    title: "🎓 מערכת בחינות ומבחני ידע אינטראקטיביים",
+    title: " מערכת בחינות ומבחני ידע אינטראקטיביים",
     icon: GraduationCap,
     accent: "amber",
     userBenefit:
@@ -116,7 +123,7 @@ const solutions: SolutionItem[] = [
       "אימות ידע אמיתי של העובדים, הפחתת טעויות בשטח, ושיפור רמת השירות והמכירות. בניית צוות מיומן ובטוח יותר.",
   },
   {
-    title: "⚡ התקנה מהירה ללא אינטגרציה מורכבת",
+    title: " התקנה מהירה ללא אינטגרציה מורכבת",
     icon: Zap,
     accent: "violet",
     userBenefit:
@@ -125,13 +132,22 @@ const solutions: SolutionItem[] = [
       "אפס צורך באינטגרציה עם מערכות המידע הקיימות. יישום מהיר תוך ימים ספורים, ללא עלויות פיתוח נוספות, סיכונים טכניים או עומס על צוות ה-IT. התחילו להכשיר עובדים עוד היום.",
   },
   {
-    title: "🎯 מיתוג מותאם ותמיכה מקצועית",
+    title: " מיתוג מותאם ותמיכה מקצועית",
     icon: Target,
     accent: "fuchsia",
     userBenefit:
       "חווית משתמש מוכרת וידידותית עם לוק אנד פיל של החברה שלך. תחושת שייכות ומקצועיות.",
     orgBenefit:
       "מיתוג מלא של המערכת בצבעים, לוגו וסגנון הארגון. תמיכה טכנית מסורה שמבטיחה המשכיות עסקית ושביעות רצון גבוהה.",
+  },
+  {
+    title: "ניתוח AI חכם של ביצועי עובדים",
+    icon: Sparkles, // או Sparkles / BotMessageSquare / Cpu
+    accent: "violet",
+    userBenefit:
+      "קבלת המלצות אישיות מבוססות AI לשיפור הלמידה שלך. המערכת מזהה את נקודות החוזק והחולשה שלך ומציעה תכנים ממוקדים שיעזרו לך להצליח.",
+    orgBenefit:
+      "ניתוח אוטומטי מתקדם של תשובות העובדים במבחנים - זיהוי דפוסי טעויות נפוצים, פערי ידע קריטיים וחיזוי עובדים בסיכון. קבלת תובנות מעמיקות והמלצות מבוססות נתונים לשיפור תוכניות ההכשרה.",
   },
 ];
 
@@ -143,7 +159,7 @@ const ProblemSolutionSection = React.forwardRef<
     {
       className,
       title = "הכשרות עובדים - בדרך חכמה , מדידה ומבוססת נתונים.",
-      subtitle = "הופכים את ההכשרות מעומס יקר לכלי אסטרטגי שמשפר ביצועים, מפחית עלויות ומבטיח עקביות בכל הארגון",
+      subtitle = "עלות ההכשרות יורדת בכ-80% והפכת לכלי אסטרטגי שמשפר ביצועים ומבטיח עקביות.",
       ...props
     },
     ref
@@ -196,7 +212,7 @@ const ProblemSolutionSection = React.forwardRef<
           </motion.div>
 
           {/* Problems & Solutions Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-1 gap-8">
             {/* Problems Section */}
 
             {/* Solutions Section */}
@@ -251,7 +267,7 @@ const ProblemSolutionSection = React.forwardRef<
                               )}>
                               <Icon className="h-5 w-5" />
                             </span>
-                            <CardTitle className="text-xl font-semibold leading-snug text-gray-900 dark:text-white">
+                            <CardTitle className="text-xl font-semibold leading-snug text-primary-500 dark:text-white">
                               {solution.title}
                             </CardTitle>
                           </div>
