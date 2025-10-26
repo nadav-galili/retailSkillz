@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" dir="rtl">
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
