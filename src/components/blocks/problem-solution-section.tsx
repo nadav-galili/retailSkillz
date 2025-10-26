@@ -158,7 +158,7 @@ const ProblemSolutionSection = React.forwardRef<
   (
     {
       className,
-      title = "ניהול הכשרות עובדים בקמעונאות - בדרך חכמה ת מדידה ומבוססת דאטה",
+      title = "ניהול הכשרות עובדים בקמעונאות - בדרך חכמה , מדידה ומבוססת דאטה",
       subtitle = "עלות ההכשרות יורדת בכ-80% והפכת לכלי אסטרטגי שמשפר ביצועים ומבטיח עקביות.",
       ...props
     },
@@ -193,7 +193,7 @@ const ProblemSolutionSection = React.forwardRef<
         className={cn("relative py-20 px-4 sm:px-6 lg:px-8", className)}
         {...props}>
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-gray-950 dark:via-blue-950/20 dark:to-gray-950 pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto" dir="rtl">
           {/* Header */}
@@ -203,7 +203,7 @@ const ProblemSolutionSection = React.forwardRef<
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
-            <h2 className="text-4xl text-primary-500 md:text-5xl font-bold mb-4 bg-clip-text  bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+            <h2 className="text-4xl text-primary-500 md:text-5xl font-bold mb-4 bg-clip-text  bg-linear-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
               {title}
             </h2>
             <p className="text-lg text-secondary-500 dark:text-gray-400 max-w-3xl mx-auto">
@@ -230,8 +230,8 @@ const ProblemSolutionSection = React.forwardRef<
                   הפתרונות של Retail-Skillz מעצימים עובדים ומנהלים בו זמנית
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  הסעיף החדש מדגיש את היתרון התחרותי הכי גדול שלכם – פשטות
-                  ומהירות ביישום, בלי להעמיס על צוות ה-IT.
+                  מדגיש את היתרון התחרותי הכי גדול שלכם – פשטות ומהירות ביישום,
+                  בלי להעמיס על צוות ה-IT.
                 </p>
               </div>
               <div className="grid gap-6 md:grid-cols-2">
@@ -248,13 +248,13 @@ const ProblemSolutionSection = React.forwardRef<
                         )}>
                         <div
                           className={cn(
-                            "absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-80 transition-opacity duration-500 group-hover:opacity-100",
+                            "absolute inset-x-0 top-0 h-1 bg-linear-to-r opacity-80 transition-opacity duration-500 group-hover:opacity-100",
                             accent.glow
                           )}
                         />
                         <div
                           className={cn(
-                            "pointer-events-none absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-40",
+                            "pointer-events-none absolute inset-0 bg-linear-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-40",
                             accent.glow
                           )}
                         />
