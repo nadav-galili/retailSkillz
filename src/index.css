@@ -1,3 +1,4 @@
+@import url("https://assets.vercel.com/dosis/geist-sans.css");
 @import "tailwindcss";
 
 body {
@@ -135,6 +136,10 @@ body {
   }
 }
 
+.subtitle-black {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto bg-[linear-gradient(180deg,#000_0%,rgba(0,0,0,0.75)_100%)] dark:bg-[linear-gradient(180deg,#FFF_0%,rgba(255,255,255,0.00)_202.08%)];
+}
+
 @theme {
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
@@ -168,4 +173,6 @@ body {
   --color-accent-700: #0369a1;
   --color-accent-800: #075985;
   --color-accent-900: #0c4a6e;
+
+  --font-geist: "Geist", sans-serif;
 }

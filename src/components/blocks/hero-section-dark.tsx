@@ -295,7 +295,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
     {
       className,
       subtitle = {
-        regular: "מערכת למידה דיגיטילית לעולם הקמעונאות - ",
+        regular: "מערכת למידה דיגיטלית לעולם הקמעונאות - ",
         gradient: "גישה מכל מקום, בכל זמן, ללא התקנות והטמעות",
       },
       description = "פלטפורמת Retail-Skillz מאפשרת לכם לנהל הכשרות עובדים בעולם הקמעונאות ברמה הגבוהה ביותר: דשבורד בזמן אמת, ניתוחי AI, אבטחת מידע מתקדמת ותמיכה טלפונית . המערכת פועלת מכל מכשיר עם סיסמא מאובטחת",
@@ -376,9 +376,9 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
 
     return (
       <div className={cn("relative", className)} ref={ref} {...props}>
-        <div className="absolute top-0 z-[0] h-screen w-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(59,130,246,0.15),rgba(255,255,255,0))]" />
+        <div className="absolute top-0 z-0 h-screen w-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(59,130,246,0.15),rgba(255,255,255,0))]" />
         <section className="relative max-w-full mx-auto z-1">
-          <div className="max-w-screen-xl z-10 mx-auto px-4 py-12 sm:py-20 md:py-28 gap-12 md:px-8">
+          <div className="max-w-7xl z-10 mx-auto px-4 py-12 sm:py-20 md:py-28 gap-12 md:px-8">
             <motion.div
               className="space-y-5 max-w-4xl leading-0 lg:leading-5 mx-auto text-center"
               dir="rtl"
@@ -392,8 +392,8 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                   "text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto",
                   // Simplified gradients for mobile performance
                   isMobile
-                    ? "bg-gradient-to-b from-gray-900 to-gray-600 dark:from-white dark:to-gray-300"
-                    : "bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]",
+                    ? "bg-linear-to-b from-gray-900 to-gray-600 dark:from-white dark:to-gray-300"
+                    : "bg-[linear-gradient(180deg,#000_0%,rgba(0,0,0,0.75)_100%)] dark:bg-[linear-gradient(180deg,#FFF_0%,rgba(255,255,255,0.00)_202.08%)]",
                   // Optimized hardware acceleration
                   isMobile &&
                     "transform-gpu will-change-transform backface-hidden"
@@ -415,8 +415,8 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                     "text-transparent bg-clip-text inline-block",
                     // Ultra-simplified gradient for mobile to prevent flickering
                     isMobile
-                      ? "bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-300 transform-gpu will-change-transform backface-hidden"
-                      : "bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-200 bg-[length:200%_100%]"
+                      ? "bg-linear-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-300 transform-gpu will-change-transform backface-hidden"
+                      : "bg-linear-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-200 bg-size-[200%_100%]"
                   )}
                   variants={animations.gradientText}
                   data-will-change={isMobile ? "true" : undefined}
@@ -451,7 +451,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                     <a
                       href={ctaHref}
                       onClick={handleCTAClick}
-                      className="inline-flex rounded-full text-center group items-center w-full justify-center bg-gradient-to-tr from-zinc-300/20 via-purple-400/30 to-transparent dark:from-zinc-300/5 dark:via-purple-400/20 text-gray-900 dark:text-white border-input border-[1px] hover:bg-gradient-to-tr hover:from-zinc-300/30 hover:via-purple-400/40 hover:to-transparent dark:hover:from-zinc-300/10 dark:hover:via-purple-400/30 transition-all sm:w-auto py-3 sm:py-4 px-6 sm:px-10 text-base sm:text-lg font-semibold">
+                      className="inline-flex rounded-full text-center group items-center w-full justify-center bg-linear-to-tr from-zinc-300/20 via-purple-400/30 to-transparent dark:from-zinc-300/5 dark:via-purple-400/20 text-gray-900 dark:text-white border-input border hover:bg-linear-to-tr hover:from-zinc-300/30 hover:via-purple-400/40 hover:to-transparent dark:hover:from-zinc-300/10 dark:hover:via-purple-400/30 transition-all sm:w-auto py-3 sm:py-4 px-6 sm:px-10 text-base sm:text-lg font-semibold">
                       {ctaText}
                     </a>
                   </div>
